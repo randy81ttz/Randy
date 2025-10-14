@@ -3,87 +3,357 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>웹툰 컨셉 쇼츠</title>
+    <title>금융 지식 쇼츠 템플릿</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Jua', sans-serif; background-color: #111; }
+        :root {
+            /* --- 색상 설정 (PwC + Muji 스타일) --- */
+            --pwc-orange: #D04A02;
+            --pwc-dark-grey: #333333;
+            --muji-bg: #F8F7F4; /* 무인양품 느낌의 따뜻한 베이지/회색 */
+            --muji-light-grey: #EAEAEA;
+            --text-primary: #2d2d2d;
+            --text-secondary: #555555;
+        }
+        body {
+            font-family: 'Pretendard', sans-serif;
+            background-color: #111;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 1rem;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
         .app-container {
-            width: 100%; max-width: 400px; aspect-ratio: 9 / 16;
-            background-color: #000; display: flex; flex-direction: column;
-            overflow: hidden; border-radius: 2rem; position: relative;
+            width: 100%;
+            max-width: 400px;
+            aspect-ratio: 9 / 16;
+            background-color: var(--muji-bg);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            border-radius: 2rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            position: relative;
         }
-        .progress-bar { width: 0%; height: 4px; background-color: #fff; transition: width 0.5s linear; }
-        .panel {
-            width: 100%; height: 100%; position: absolute;
-            background-size: cover; background-position: center;
-            opacity: 0; transform: scale(1.05);
-            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+        .progress-bar-container {
+            width: 100%;
+            height: 5px;
+            background-color: var(--muji-light-grey);
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 10;
         }
-        .panel.active { opacity: 1; transform: scale(1); }
-        .thought-bubble {
-            position: absolute; bottom: 5%; left: 5%; right: 5%;
-            background-color: rgba(255,255,255,0.9);
-            border: 3px solid black; border-radius: 1rem;
-            padding: 1.5rem; text-align: center;
-            font-size: 1.8rem; color: #333; line-height: 1.4;
-            transform: translateY(20px); opacity: 0;
-            animation: popUp 0.5s 0.3s forwards;
+        .progress-bar {
+            width: 0%;
+            height: 100%;
+            background-color: var(--pwc-orange);
+            transition: width 0.5s linear;
         }
-        @keyframes popUp {
-            to { transform: translateY(0); opacity: 1; }
+        .slide-content {
+            flex-grow: 1;
+            padding: 3rem 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            opacity: 0;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .slide-content.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- 슬라이드 타입별 스타일 --- */
+        .title-slide h1 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--text-primary);
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+        .title-slide h1 .highlight {
+            color: var(--pwc-orange);
+        }
+        .title-slide p {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-secondary);
+        }
+        
+        .definition-slide h2 {
+            font-size: 2.8rem;
+            font-weight: 900;
+            color: var(--pwc-orange);
+            margin-bottom: 1rem;
+        }
+        .definition-slide p {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 2rem;
+        }
+        .definition-slide .formula {
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: var(--text-secondary);
+            background-color: #ffffff;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            border: 1px solid var(--muji-light-grey);
+        }
+
+        .example-slide {
+            justify-content: flex-start;
+            padding-top: 5rem;
+        }
+        .example-slide .question {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-secondary);
+            background-color: #fff;
+            padding: 0.75rem 1.2rem;
+            border-radius: 999px;
+            margin-bottom: 2rem;
+            border: 1px solid var(--muji-light-grey);
+        }
+        .example-slide .calculation {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+        .example-slide .calculation .result {
+            font-weight: 900;
+            font-size: 2.5rem;
+            color: var(--pwc-orange);
+        }
+        .example-slide .note {
+            margin-top: 2rem;
+            font-size: 1rem;
+            color: var(--text-secondary);
+            padding: 1rem;
+            background-color: rgba(255,255,255,0.7);
+            border-radius: 0.5rem;
+            line-height: 1.5;
+        }
+
+        .summary-slide .summary-box {
+            width: 100%;
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 1rem;
+            border: 1px solid var(--muji-light-grey);
+        }
+        .summary-slide .summary-item {
+            text-align: center;
+        }
+        .summary-slide .summary-item .label {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-secondary);
+        }
+        .summary-slide .summary-item .value {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--pwc-orange);
+            margin-top: 0.25rem;
+        }
+        .summary-slide hr {
+            border: none;
+            height: 1px;
+            background-color: var(--muji-light-grey);
+            margin: 1.5rem 0;
+        }
+        .footer {
+            position: absolute;
+            bottom: 1.5rem;
+            width: 100%;
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            font-weight: 700;
         }
     </style>
 </head>
-<body class="flex items-center justify-center min-h-screen p-4">
+<body>
     <div class="app-container">
-        <div class="absolute top-0 left-0 w-full z-10"><div id="progress-bar" class="progress-bar"></div></div>
-        <div id="panel-container"></div>
+        <div class="progress-bar-container">
+            <div id="progress-bar" class="progress-bar"></div>
+        </div>
+        <div id="slide-container">
+            <!-- 슬라이드가 여기에 동적으로 삽입됩니다 -->
+        </div>
+        <div class="footer">
+            야금일기
+        </div>
     </div>
+
 <script>
     // --- 이곳에 콘텐츠를 수정하거나 추가하세요 ---
+    // type: 'title', 'definition', 'example', 'summary' 중 선택
+    // duration: 각 슬라이드가 보여지는 시간 (밀리초 단위, 1000 = 1초)
     const slidesData = [
-        { duration: 4000, text: "음... '5% 상승'과 '5%p 상승'은 뭐가 다른 거지?" },
-        { duration: 5000, text: "아! 퍼센트(%)는 '비율'이니까 곱셈으로! 월급의 10%는 30만원!" },
-        { duration: 5000, text: "퍼센트포인트(%p)는 '차이'니까 뺄셈! 3% - 2% = 1%p!" },
-        { duration: 4000, text: "오케이! 이제 알겠다!" }
+        {
+            type: 'title',
+            duration: 3500,
+            content: {
+                title: `'작년 이익률 <span class="highlight">5%</span> 상승'<br>'예금 금리 <span class="highlight">5%p</span> 상승'`,
+                question: "이 둘의 차이, 알고 계세요?"
+            }
+        },
+        {
+            type: 'definition',
+            duration: 4000,
+            content: {
+                title: '%',
+                subtitle: '(퍼센트)',
+                description: '기존 값에 대한 <br>상대적 비율을 나타내요.',
+                formula: '계산: 곱셈(×) 또는 나눗셈(÷)'
+            }
+        },
+        {
+            type: 'example',
+            duration: 5000,
+            content: {
+                question: '월급 300만원이 <b style="color: #D04A02">10%</b> 인상된다면?',
+                calculation: '300만원 × 10%<br>= <span class="result">30만원</span> 인상',
+                note: '총 월급은 330만원이 됩니다.'
+            }
+        },
+        {
+            type: 'definition',
+            duration: 4000,
+            content: {
+                title: '%p',
+                subtitle: '(퍼센트포인트)',
+                description: '퍼센트 값들 간의 <br>단순한 산술적 차이를 말해요.',
+                formula: '계산: 덧셈(+) 또는 뺄셈(-)'
+            }
+        },
+        {
+            type: 'example',
+            duration: 5500,
+            content: {
+                question: '예금 금리가 <b style="color: #D04A02">2% → 3%</b>로 올랐다면?',
+                calculation: '3% - 2%<br>= <span class="result">1%p</span> 인상',
+                note: '만약 <b>`1% 인상`</b>이라고 하면?<br>기존 금리(2%)의 1%인 0.02%만 오르는<br>전혀 다른 뜻이 됩니다.'
+            }
+        },
+        {
+            type: 'summary',
+            duration: 5000,
+            content: {
+                title: "핵심 요약",
+                items: [
+                    { label: '% (퍼센트)는', value: '비율 (곱셈/나눗셈)' },
+                    { label: '%p (퍼센트포인트)는', value: '단순 차이 (덧셈/뺄셈)' }
+                ]
+            }
+        }
     ];
-    // --- 이미지 URL을 이곳에 교체하세요 ---
-    // 1. Imgur와 같은 무료 이미지 호스팅 사이트에 이미지를 업로드하세요.
-    // 2. '직접 링크'(Direct Link, .jpg/.png로 끝나는 주소)를 복사하세요.
-    // 3. 아래 따옴표 안에 붙여넣으세요. (예시: https://i.imgur.com/......jpg)
-    const characterImageUrl = 'https://imgcdn.stablediffusionweb.com/2025/9/29/45d41ae0-b83d-43bc-abcb-24027093d222.jpg'; // <-- 여기에 이미지 주소를 붙여넣으세요!
 
-    const panelContainer = document.getElementById('panel-container');
+    const slideContainer = document.getElementById('slide-container');
     const progressBar = document.getElementById('progress-bar');
     let currentSlideIndex = 0;
+    let slideTimeout;
+
+    function renderSlide(slide) {
+        let html = '';
+        switch (slide.type) {
+            case 'title':
+                html = `
+                    <div class="slide-content title-slide">
+                        <h1>${slide.content.title}</h1>
+                        <p>${slide.content.question}</p>
+                    </div>`;
+                break;
+            case 'definition':
+                html = `
+                    <div class="slide-content definition-slide">
+                        <h2>${slide.content.title} <span style="font-size: 1.5rem; color: var(--text-secondary);">${slide.content.subtitle}</span></h2>
+                        <p>${slide.content.description}</p>
+                        <div class="formula">${slide.content.formula}</div>
+                    </div>`;
+                break;
+            case 'example':
+                html = `
+                    <div class="slide-content example-slide">
+                        <div class="question">${slide.content.question}</div>
+                        <p class="calculation">${slide.content.calculation}</p>
+                        ${slide.content.note ? `<p class="note">${slide.content.note}</p>` : ''}
+                    </div>`;
+                break;
+            case 'summary':
+                html = `
+                    <div class="slide-content summary-slide">
+                        <div class="summary-box">
+                            <div class="summary-item">
+                                <div class="label">${slide.content.items[0].label}</div>
+                                <div class="value">${slide.content.items[0].value}</div>
+                            </div>
+                            <hr>
+                            <div class="summary-item">
+                                <div class="label">${slide.content.items[1].label}</div>
+                                <div class="value">${slide.content.items[1].value}</div>
+                            </div>
+                        </div>
+                    </div>`;
+                break;
+        }
+        return html;
+    }
 
     function showNextSlide() {
         if (currentSlideIndex >= slidesData.length) {
+            // 모든 슬라이드가 끝나면 2초 후 처음으로 돌아갑니다.
             setTimeout(() => {
                 currentSlideIndex = 0;
                 showNextSlide();
             }, 2000);
             return;
         }
-        
+
         const slide = slidesData[currentSlideIndex];
-        
-        panelContainer.innerHTML = `
-            <div class="panel active" style="background-image: url(${characterImageUrl});">
-                <div class="thought-bubble">${slide.text}</div>
-            </div>`;
+        slideContainer.innerHTML = renderSlide(slide);
+
+        // 이전 active 클래스 제거 후 새로 추가하여 애니메이션 트리거
+        const activeSlide = slideContainer.querySelector('.slide-content');
+        if (activeSlide) {
+            setTimeout(() => activeSlide.classList.add('active'), 50);
+        }
 
         const totalDuration = slidesData.reduce((acc, s) => acc + s.duration, 0);
         const elapsedDuration = slidesData.slice(0, currentSlideIndex + 1).reduce((acc, s) => acc + s.duration, 0);
-        progressBar.style.width = `${(elapsedDuration / totalDuration) * 100}%`;
+        
+        // 프로그레스 바 업데이트
+        // requestAnimationFrame을 사용하여 부드러운 애니메이션을 유도합니다.
+        requestAnimationFrame(() => {
+             progressBar.style.width = `${(elapsedDuration / totalDuration) * 100}%`;
+        });
        
+
         currentSlideIndex++;
-        setTimeout(showNextSlide, slide.duration);
+        
+        clearTimeout(slideTimeout);
+        slideTimeout = setTimeout(showNextSlide, slide.duration);
     }
     
-    window.onload = () => showNextSlide();
+    // 페이지 로드 시 슬라이드 쇼 시작
+    window.onload = () => {
+        showNextSlide();
+    };
+
 </script>
 </body>
 </html>
-
