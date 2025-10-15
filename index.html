@@ -136,6 +136,79 @@
             color: var(--text-secondary);
         }
 
+        /* --- 비교 슬라이드 (스타일 수정) --- */
+        .compare-slide {
+            padding: 2.5rem 1.5rem;
+        }
+        .compare-slide .title {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--text-primary);
+            margin-bottom: 2rem;
+        }
+        .compare-slide .compare-box {
+            width: 100%;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            border: 2px solid var(--muji-light-grey);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+        .compare-slide .compare-item {
+            margin-bottom: 1.5rem;
+        }
+        .compare-slide .compare-item:last-child {
+            margin-bottom: 0;
+        }
+        .compare-slide .label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            text-align: center; /* 가운데 정렬 */
+        }
+        .compare-slide .bank-name {
+            font-size: 1.3rem;
+            font-weight: 900;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center; /* 가운데 정렬 */
+            gap: 0.5rem;
+        }
+        .compare-slide .goal-wrapper {
+            text-align: center;
+            margin-top: 1rem;
+        }
+        .compare-slide .goals {
+            font-size: 1rem;
+            font-weight: 700;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            display: block; /* 너비 100%로 변경 */
+            width: 100%;
+        }
+        .compare-slide .goal-desc {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--text-secondary);
+            margin-top: 0.75rem;
+        }
+        .compare-slide .single-goal {
+            background: #FFF3E0;
+            color: #E65100;
+        }
+        .compare-slide .dual-goal {
+            background: #E8F5E9;
+            color: var(--green);
+        }
+        .compare-slide hr {
+            border: none;
+            height: 1px;
+            background-color: var(--muji-light-grey);
+            margin: 1.5rem 0;
+        }
+        /* --- 비교 슬라이드 끝 --- */
+
         /* 인플레이션 슬라이드 */
         .inflation-slide {
             padding: 2.5rem 1.5rem;
@@ -239,7 +312,7 @@
             margin: 0.5rem 0;
         }
 
-        /* Trade-off 슬라이드 (수정됨) */
+        /* Trade-off 슬라이드 */
         .tradeoff-slide {
             padding: 2.5rem 1.5rem;
         }
@@ -433,7 +506,7 @@
                 ]
             }
         },
-        {
+        { 
             type: 'compare',
             duration: 5000,
             content: {
@@ -443,15 +516,15 @@
                         flag: '🇩🇪🇪🇺',
                         name: '분데스방크·ECB',
                         goals: '물가 안정',
-                        type: 'single',
-                        note: '물가만 보면 됨'
+                        description: '물가만 보면 됨',
+                        type: 'single'
                     },
                     { 
                         flag: '🇺🇸',
                         name: '미국 연준',
                         goals: '물가 + 고용',
-                        type: 'dual',
-                        note: '둘 다 봐야 함 → 훨씬 어려움!'
+                        description: '둘 다 봐야 함 → 훨씬 어려움!',
+                        type: 'dual'
                     }
                 ]
             }
@@ -517,7 +590,7 @@
             }
         },
         {
-            type: 'definition', // 핵심 포인트 슬라이드 (저울)
+            type: 'definition', 
             duration: 4500,
             content: {
                 icon: '⚖️',
@@ -527,7 +600,7 @@
             }
         },
         {
-            type: 'definition', // QT 종료 슬라이드 (물방울)
+            type: 'definition',
             duration: 4500,
             content: {
                 icon: '💧',
@@ -579,6 +652,30 @@
                                     </div>
                                 </div>
                             `).join('')}
+                        </div>
+                    </div>`;
+                break;
+            
+            case 'compare':
+                html = `
+                    <div class="slide-content compare-slide">
+                        <div class="title">${slide.content.title}</div>
+                        <div class="compare-box">
+                            ${slide.content.items.map(item => `
+                                <div class="compare-item">
+                                    <div class="label">목표</div>
+                                    <div class="bank-name">
+                                        <span>${item.flag}</span>
+                                        <span>${item.name}</span>
+                                    </div>
+                                    <div class="goal-wrapper">
+                                        <div class="goals ${item.type === 'single' ? 'single-goal' : 'dual-goal'}">
+                                            ${item.goals}
+                                        </div>
+                                        <div class="goal-desc">${item.description}</div>
+                                    </div>
+                                </div>
+                            `).join('<hr>')}
                         </div>
                     </div>`;
                 break;
@@ -731,3 +828,4 @@
 </script>
 </body>
 </html>
+
