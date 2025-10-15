@@ -1,588 +1,300 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>파월 의장 QT 종료 발언 완벽 분석</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;700;900&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --pwc-orange: #D04A02;
-            --pwc-dark-grey: #333333;
-            --muji-bg: #F8F7F4;
-            --muji-light-grey: #EAEAEA;
-            --text-primary: #2d2d2d;
-            --text-secondary: #555555;
-            --green: #2D7D2D;
-            --red: #C62828;
+const slidesData = [
+    {
+        type: 'title',
+        duration: 3500,
+        content: {
+            title: `파월의<br><span class="highlight">비둘기파 전향</span>`,
+            subtitle: "물가 vs 고용<br>선택의 순간",
+            date: "2025.10.14 NABE 연설"
         }
-        body {
-            font-family: 'Pretendard', sans-serif;
-            background-color: #111;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            padding: 1rem;
+    },
+    {
+        type: 'timeline',
+        duration: 5000,
+        content: {
+            title: "3개월간의 변화",
+            items: [
+                { date: '7월', title: '금리 동결', desc: '트럼프 압박 속 독립성 수호' },
+                { date: '9월', title: '0.25%p 인하', desc: '매파→비둘기파 전환 시작' },
+                { date: '10월', title: '완화 신호 명확화', desc: '고용이 더 중요해졌다' }
+            ]
         }
-        .app-container {
-            width: 100%;
-            max-width: 400px;
-            aspect-ratio: 9 / 16;
-            background-color: var(--muji-bg);
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-            border-radius: 2rem;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-            position: relative;
+    },
+    {
+        type: 'inflation',
+        duration: 5000,
+        content: {
+            title: "물가는 잡혔나?",
+            current: "2.9%",
+            target: "2.0%",
+            gap: "0.9%p",
+            status: "아직 높지만...",
+            note: "관세 제외하면 거의 목표 수준"
         }
-        .progress-bar-container {
-            width: 100%;
-            height: 5px;
-            background-color: var(--muji-light-grey);
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 10;
+    },
+    {
+        type: 'choice',
+        duration: 5500,
+        content: {
+            title: "파월의 선택",
+            optionA: {
+                label: "남은 0.9%p까지<br>완전히 제거",
+                risk: "고용 시장 붕괴<br>경기 침체 위험"
+            },
+            optionB: {
+                label: "2.9%에서<br>만족하고 멈춤",
+                benefit: "고용 보호<br>연착륙 가능"
+            },
+            choice: "B를 선택!"
         }
-        .progress-bar {
-            width: 0%;
-            height: 100%;
-            background-color: var(--pwc-orange);
-            transition: width 0.5s linear;
-        }
-        .slide-content {
-            flex-grow: 1;
-            padding: 3rem 2rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            opacity: 0;
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-        .slide-content.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* 타이틀 슬라이드 */
-        .title-slide h1 {
-            font-size: 2.3rem;
-            font-weight: 900;
-            color: var(--text-primary);
-            line-height: 1.2;
-            margin-bottom: 1rem;
-        }
-        .title-slide h1 .highlight {
-            color: var(--pwc-orange);
-        }
-        .title-slide p {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--text-secondary);
-            line-height: 1.4;
-        }
-        .title-slide .date {
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-            margin-top: 1rem;
-            opacity: 0.8;
-        }
-
-        /* 타임라인 슬라이드 */
-        .timeline-slide {
-            justify-content: flex-start;
-            padding-top: 3.5rem;
-        }
-        .timeline-slide .timeline-container {
-            width: 100%;
-        }
-        .timeline-slide .timeline-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1.8rem;
-            background: white;
-            padding: 1rem;
-            border-radius: 0.75rem;
-            border: 2px solid var(--muji-light-grey);
-        }
-        .timeline-slide .timeline-item .date {
-            font-size: 1.3rem;
-            font-weight: 900;
-            color: var(--pwc-orange);
-            min-width: 80px;
-        }
-        .timeline-slide .timeline-item .content {
-            flex: 1;
-            text-align: left;
-            padding-left: 1rem;
-        }
-        .timeline-slide .timeline-item .title {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 0.3rem;
-        }
-        .timeline-slide .timeline-item .desc {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-        }
-
-        /* 비교 슬라이드 */
-        .compare-slide {
-            padding: 2.5rem 1.5rem;
-        }
-        .compare-slide .title {
-            font-size: 1.8rem;
-            font-weight: 900;
-            color: var(--text-primary);
-            margin-bottom: 2rem;
-        }
-        .compare-slide .compare-box {
-            width: 100%;
-            background: white;
-            padding: 1.5rem;
-            border-radius: 1rem;
-            border: 2px solid var(--muji-light-grey);
-        }
-        .compare-slide .compare-item {
-            margin-bottom: 1.5rem;
-        }
-        .compare-slide .compare-item:last-child {
-            margin-bottom: 0;
-        }
-        .compare-slide .label {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-            margin-bottom: 0.5rem;
-        }
-        .compare-slide .bank-name {
-            font-size: 1.3rem;
-            font-weight: 900;
-            margin-bottom: 0.5rem;
-        }
-        .compare-slide .goals {
-            font-size: 1rem;
-            font-weight: 700;
-            padding: 0.5rem;
-            border-radius: 0.5rem;
-        }
-        .compare-slide .single-goal {
-            background: #FFF3E0;
-            color: #E65100;
-        }
-        .compare-slide .dual-goal {
-            background: #E8F5E9;
-            color: var(--green);
-        }
-
-        /* 정의 슬라이드 */
-        .definition-slide {
-            padding: 2.5rem 1.5rem;
-        }
-        .definition-slide .icon {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-        }
-        .definition-slide h2 {
-            font-size: 2.5rem;
-            font-weight: 900;
-            color: var(--pwc-orange);
-            margin-bottom: 0.8rem;
-        }
-        .definition-slide .subtitle {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-        }
-        .definition-slide p {
-            font-size: 1.15rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            line-height: 1.5;
-            margin-bottom: 1.5rem;
-        }
-        .definition-slide .formula {
-            font-size: 1rem;
-            font-weight: 400;
-            color: var(--text-secondary);
-            background-color: #ffffff;
-            padding: 0.75rem 1.2rem;
-            border-radius: 0.5rem;
-            border: 1px solid var(--muji-light-grey);
-        }
-
-        /* 상황 슬라이드 */
-        .situation-slide {
-            padding: 2.5rem 1.5rem;
-        }
-        .situation-slide .title {
-            font-size: 1.8rem;
-            font-weight: 900;
-            color: var(--text-primary);
-            margin-bottom: 1.5rem;
-        }
-        .situation-slide .crisis-box {
-            background: #FFEBEE;
-            padding: 1.2rem;
-            border-radius: 0.75rem;
-            border: 2px solid #EF9A9A;
-            margin-bottom: 1.5rem;
-        }
-        .situation-slide .crisis-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 0.8rem;
-            font-size: 1rem;
-            color: var(--red);
-            font-weight: 700;
-        }
-        .situation-slide .crisis-item:last-child {
-            margin-bottom: 0;
-        }
-        .situation-slide .crisis-icon {
-            font-size: 1.5rem;
-            margin-right: 0.75rem;
-        }
-        .situation-slide .response {
-            background: white;
-            padding: 1rem;
-            border-radius: 0.75rem;
-            border: 2px solid var(--pwc-orange);
-        }
-        .situation-slide .response-text {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--pwc-orange);
-        }
-
-        /* 이유 슬라이드 */
-        .reason-slide {
-            padding: 2.5rem 1.5rem;
-        }
-        .reason-slide .question {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--text-secondary);
-            background-color: #fff;
-            padding: 0.75rem 1.2rem;
-            border-radius: 999px;
-            margin-bottom: 2rem;
-            border: 2px solid var(--muji-light-grey);
-        }
-        .reason-slide .answer {
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            line-height: 1.5;
-            margin-bottom: 1.5rem;
-        }
-        .reason-slide .highlight-box {
-            font-size: 2rem;
-            font-weight: 900;
-            color: var(--pwc-orange);
-            background: white;
-            padding: 1rem;
-            border-radius: 0.75rem;
-            border: 2px solid var(--pwc-orange);
-        }
-
-        /* 요약 슬라이드 */
-        .summary-slide .summary-box {
-            width: 100%;
-            background-color: #fff;
-            padding: 2rem;
-            border-radius: 1rem;
-            border: 2px solid var(--muji-light-grey);
-        }
-        .summary-slide .summary-item {
-            text-align: center;
-            padding: 1rem 0;
-        }
-        .summary-slide .summary-item .icon {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-        }
-        .summary-slide .summary-item .label {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--text-secondary);
-        }
-        .summary-slide .summary-item .value {
-            font-size: 2rem;
-            font-weight: 900;
-            color: var(--pwc-orange);
-            margin-top: 0.3rem;
-        }
-        .summary-slide hr {
-            border: none;
-            height: 2px;
-            background-color: var(--muji-light-grey);
-            margin: 1rem 0;
-        }
-
-        .footer {
-            position: absolute;
-            bottom: 1.5rem;
-            width: 100%;
-            text-align: center;
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            font-weight: 700;
-        }
-    </style>
-</head>
-<body>
-    <div class="app-container">
-        <div class="progress-bar-container">
-            <div id="progress-bar" class="progress-bar"></div>
-        </div>
-        <div id="slide-container"></div>
-        <div class="footer">야금일기</div>
-    </div>
-
-<script>
-    const slidesData = [
-        {
-            type: 'title',
-            duration: 3500,
-            content: {
-                title: `파월 의장<br><span class="highlight">"긴축 끝"</span> 선언`,
-                subtitle: "2년간의 긴축 정책,<br>드디어 마무리 단계",
-                date: "2025.10.14 NABE 연설"
-            }
-        },
-        {
-            type: 'timeline',
-            duration: 5000,
-            content: {
-                title: "3개월간의 여정",
-                items: [
-                    { date: '7월', title: '금리 동결', desc: '트럼프 압박 속 독립성 수호' },
-                    { date: '9월', title: '0.25%p 인하', desc: '경제 데이터 반영 시작' },
-                    { date: '10월', title: 'QT 조만간 종료', desc: '긴축 마무리 단계 진입' }
-                ]
-            }
-        },
-        {
-            type: 'compare',
-            duration: 5000,
-            content: {
-                title: "미국 연준의 특별함",
-                items: [
-                    { 
-                        flag: '🇩🇪🇪🇺',
-                        name: '분데스방크·ECB',
-                        goals: '물가 안정',
-                        type: 'single'
-                    },
-                    { 
-                        flag: '🇺🇸',
-                        name: '미국 연준',
-                        goals: '물가 안정 + 최대 고용',
-                        type: 'dual'
-                    }
-                ]
-            }
-        },
-        {
-            type: 'definition',
-            duration: 4500,
-            content: {
-                icon: '💧',
-                title: 'QT 조만간 종료',
-                subtitle: '(양적긴축 종료)',
-                description: '물가를 잡기 위해<br>2년간 거둬들인 돈,<br><span style="color: var(--pwc-orange);">몇 달 내</span> 그만 거둔다',
-                formula: '수도꼭지 잠그기 → 점진적 중단'
-            }
-        },
-        {
-            type: 'situation',
-            duration: 5000,
-            content: {
-                title: "지금 미국 상황은?",
-                crisis: [
-                    { icon: '🏛️', text: '정부 셧다운 진행 중' },
-                    { icon: '📊', text: '경제 데이터 발표 중단' },
-                    { icon: '🌍', text: '관세·이민 정책 불확실성' }
-                ],
-                response: '불확실성 속<br>선제적 완화 신호'
-            }
-        },
-        {
-            type: 'reason',
-            duration: 5000,
-            content: {
-                question: '왜 지금 QT를 끝내나?',
-                answer: '물가는 잡혔지만<br>고용·성장이 위험해지고 있다',
-                highlight: '"이중 책무" 균형'
-            }
-        },
-        {
-            type: 'definition',
-            duration: 4500,
-            content: {
-                icon: '⚖️',
-                title: '핵심 포인트',
-                subtitle: '',
-                description: '물가 잡기(완료) ✓<br>→ 이제는 고용 지키기',
-                formula: '연준의 이중 책무 이행'
-            }
-        },
-        {
-            type: 'summary',
-            duration: 5000,
-            content: {
-                title: "우리에게 미치는 영향",
-                items: [
-                    { icon: '📉', label: '대출·예금 금리', value: '하락 기대 ↑' },
-                    { icon: '📈', label: '주식·코인', value: '상승 모멘텀' }
-                ]
+    },
+    {
+        type: 'tradeoff',
+        duration: 5000,
+        content: {
+            title: "이중 책무의 딜레마",
+            before: {
+                label: "이전 (2023-24)",
+                inflation: "↑↑ 위험",
+                employment: "↑↑ 안전",
+                direction: "→ 둘 다 긴축"
+            },
+            now: {
+                label: "현재 (2025.10)",
+                inflation: "↓ 낮아지는 중",
+                employment: "↓↓ 위험!",
+                direction: "→ 반대로 당김"
             }
         }
-    ];
-
-    const slideContainer = document.getElementById('slide-container');
-    const progressBar = document.getElementById('progress-bar');
-    let currentSlideIndex = 0;
-    let slideTimeout;
-
-    function renderSlide(slide) {
-        let html = '';
-        switch (slide.type) {
-            case 'title':
-                html = `
-                    <div class="slide-content title-slide">
-                        <h1>${slide.content.title}</h1>
-                        <p>${slide.content.subtitle}</p>
-                        <p class="date">${slide.content.date}</p>
-                    </div>`;
-                break;
-            case 'timeline':
-                html = `
-                    <div class="slide-content timeline-slide">
-                        <div class="timeline-container">
-                            ${slide.content.items.map(item => `
-                                <div class="timeline-item">
-                                    <div class="date">${item.date}</div>
-                                    <div class="content">
-                                        <div class="title">${item.title}</div>
-                                        <div class="desc">${item.desc}</div>
-                                    </div>
-                                </div>
-                            `).join('')}
-                        </div>
-                    </div>`;
-                break;
-            case 'compare':
-                html = `
-                    <div class="slide-content compare-slide">
-                        <div class="title">${slide.content.title}</div>
-                        <div class="compare-box">
-                            ${slide.content.items.map(item => `
-                                <div class="compare-item">
-                                    <div class="label">목표</div>
-                                    <div class="bank-name">${item.flag} ${item.name}</div>
-                                    <div class="goals ${item.type === 'single' ? 'single-goal' : 'dual-goal'}">
-                                        ${item.goals}
-                                    </div>
-                                </div>
-                            `).join('<hr>')}
-                        </div>
-                    </div>`;
-                break;
-            case 'definition':
-                html = `
-                    <div class="slide-content definition-slide">
-                        ${slide.content.icon ? `<div class="icon">${slide.content.icon}</div>` : ''}
-                        <h2>${slide.content.title}</h2>
-                        ${slide.content.subtitle ? `<div class="subtitle">${slide.content.subtitle}</div>` : ''}
-                        <p>${slide.content.description}</p>
-                        <div class="formula">${slide.content.formula}</div>
-                    </div>`;
-                break;
-            case 'situation':
-                html = `
-                    <div class="slide-content situation-slide">
-                        <div class="title">${slide.content.title}</div>
-                        <div class="crisis-box">
-                            ${slide.content.crisis.map(c => `
-                                <div class="crisis-item">
-                                    <span class="crisis-icon">${c.icon}</span>
-                                    ${c.text}
-                                </div>
-                            `).join('')}
-                        </div>
-                        <div class="response">
-                            <div class="response-text">${slide.content.response}</div>
-                        </div>
-                    </div>`;
-                break;
-            case 'reason':
-                html = `
-                    <div class="slide-content reason-slide">
-                        <div class="question">${slide.content.question}</div>
-                        <div class="answer">${slide.content.answer}</div>
-                        <div class="highlight-box">${slide.content.highlight}</div>
-                    </div>`;
-                break;
-            case 'summary':
-                html = `
-                    <div class="slide-content summary-slide">
-                        <div class="summary-box">
-                            ${slide.content.items.map(item => `
-                                <div class="summary-item">
-                                    <div class="icon">${item.icon}</div>
-                                    <div class="label">${item.label}</div>
-                                    <div class="value">${item.value}</div>
-                                </div>
-                            `).join('<hr>')}
-                        </div>
-                    </div>`;
-                break;
+    },
+    {
+        type: 'employment',
+        duration: 5000,
+        content: {
+            title: "고용 시장 경고등 🚨",
+            signals: [
+                { icon: '💰', text: '임금 상승 급격히 둔화' },
+                { icon: '👷', text: '노동 참여율 하락' },
+                { icon: '😰', text: '구직 신뢰도 하락' }
+            ],
+            conclusion: "고용 하방 위험 증가"
         }
-        return html;
+    },
+    {
+        type: 'compare',
+        duration: 5000,
+        content: {
+            title: "미국 연준의 특별함",
+            items: [
+                { 
+                    flag: '🇩🇪🇪🇺',
+                    name: '분데스방크·ECB',
+                    goals: '물가 안정',
+                    type: 'single',
+                    note: '물가만 보면 됨'
+                },
+                { 
+                    flag: '🇺🇸',
+                    name: '미국 연준',
+                    goals: '물가 + 고용',
+                    type: 'dual',
+                    note: '둘 다 봐야 함<br>→ 훨씬 어려움!'
+                }
+            ]
+        }
+    },
+    {
+        type: 'qt',
+        duration: 4500,
+        content: {
+            icon: '💧',
+            title: 'QT 9월 종료',
+            subtitle: '(양적긴축 종료)',
+            description: '2019년 자금경색<br>재발 방지',
+            formula: '더 이상 돈 안 거둠'
+        }
+    },
+    {
+        type: 'conclusion',
+        duration: 5000,
+        content: {
+            title: "핵심 포인트",
+            points: [
+                { 
+                    q: "물가 잡혔나?",
+                    a: "충분히 (2.9%, 관세 제외시 ~2.2%)"
+                },
+                {
+                    q: "고용은?",
+                    a: "위험 증가 중 🚨"
+                },
+                {
+                    q: "파월 선택은?",
+                    a: "고용 보호 > 완벽한 물가"
+                }
+            ]
+        }
+    },
+    {
+        type: 'summary',
+        duration: 5000,
+        content: {
+            title: "우리에게 미치는 영향",
+            items: [
+                { icon: '📉', label: '금리', value: '하락 확실' },
+                { icon: '📈', label: '주식·코인', value: '강세 지속' }
+            ]
+        }
     }
+];
+/* 인플레이션 슬라이드 */
+.inflation-slide {
+    padding: 2.5rem 1.5rem;
+}
+.inflation-slide .title {
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--text-primary);
+    margin-bottom: 2rem;
+}
+.inflation-slide .numbers {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 2rem;
+}
+.inflation-slide .number-box {
+    text-align: center;
+}
+.inflation-slide .label {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+}
+.inflation-slide .value {
+    font-size: 3rem;
+    font-weight: 900;
+}
+.inflation-slide .current {
+    color: var(--pwc-orange);
+}
+.inflation-slide .target {
+    color: var(--green);
+}
+.inflation-slide .gap {
+    color: var(--red);
+}
+.inflation-slide .status {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+}
+.inflation-slide .note {
+    background: #FFF3E0;
+    padding: 1rem;
+    border-radius: 0.75rem;
+    font-size: 1rem;
+    color: #E65100;
+    border: 2px solid #FFB74D;
+}
 
-    function showNextSlide() {
-        if (currentSlideIndex >= slidesData.length) {
-            setTimeout(() => {
-                currentSlideIndex = 0;
-                progressBar.style.width = '0%';
-                showNextSlide();
-            }, 2000);
-            return;
-        }
+/* 선택 슬라이드 */
+.choice-slide {
+    padding: 2rem 1.5rem;
+}
+.choice-slide .title {
+    font-size: 1.8rem;
+    font-weight: 900;
+    margin-bottom: 1.5rem;
+}
+.choice-slide .option {
+    background: white;
+    padding: 1.2rem;
+    border-radius: 0.75rem;
+    margin-bottom: 1rem;
+    border: 2px solid var(--muji-light-grey);
+}
+.choice-slide .option-label {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+.choice-slide .option-detail {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+}
+.choice-slide .chosen {
+    border-color: var(--pwc-orange);
+    background: #FFF3E0;
+}
+.choice-slide .choice-arrow {
+    text-align: center;
+    font-size: 2.5rem;
+    color: var(--pwc-orange);
+    margin: 1rem 0;
+}
 
-        const slide = slidesData[currentSlideIndex];
-        slideContainer.innerHTML = renderSlide(slide);
+/* Trade-off 슬라이드 */
+.tradeoff-slide {
+    padding: 2.5rem 1.5rem;
+}
+.tradeoff-slide .title {
+    font-size: 1.8rem;
+    font-weight: 900;
+    margin-bottom: 1.5rem;
+}
+.tradeoff-slide .period {
+    background: white;
+    padding: 1.2rem;
+    border-radius: 0.75rem;
+    margin-bottom: 1rem;
+    border: 2px solid var(--muji-light-grey);
+}
+.tradeoff-slide .period-label {
+    font-size: 1.1rem;
+    font-weight: 900;
+    color: var(--pwc-orange);
+    margin-bottom: 1rem;
+}
+.tradeoff-slide .metric {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+.tradeoff-slide .direction {
+    text-align: center;
+    margin-top: 0.75rem;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+}
 
-        const activeSlide = slideContainer.querySelector('.slide-content');
-        if (activeSlide) {
-            setTimeout(() => activeSlide.classList.add('active'), 50);
-        }
-
-        const totalDuration = slidesData.reduce((acc, s) => acc + s.duration, 0);
-        const elapsedDuration = slidesData.slice(0, currentSlideIndex + 1).reduce((acc, s) => acc + s.duration, 0);
-        
-        requestAnimationFrame(() => {
-             progressBar.style.width = `${(elapsedDuration / totalDuration) * 100}%`;
-        });
-        
-        currentSlideIndex++;
-        clearTimeout(slideTimeout);
-        slideTimeout = setTimeout(showNextSlide, slide.duration);
-    }
-    
-    window.onload = () => showNextSlide();
-</script>
-</body>
-</html>
+/* 결론 슬라이드 */
+.conclusion-slide {
+    padding: 2.5rem 1.5rem;
+}
+.conclusion-slide .title {
+    font-size: 1.8rem;
+    font-weight: 900;
+    margin-bottom: 1.5rem;
+}
+.conclusion-slide .qa-item {
+    background: white;
+    padding: 1rem;
+    border-radius: 0.75rem;
+    margin-bottom: 1rem;
+    border: 2px solid var(--muji-light-grey);
+}
+.conclusion-slide .question {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+}
+.conclusion-slide .answer {
+    font-size: 1.2rem;
+    font-weight: 900;
+    color: var(--pwc-orange);
+}
