@@ -141,29 +141,29 @@
             padding: 2.5rem 1.5rem;
         }
         .inflation-slide .title {
-            font-size: 2rem;
+            font-size: 1.8rem;
             font-weight: 900;
             color: var(--text-primary);
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
         .inflation-slide .numbers {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
         }
         .inflation-slide .number-box {
             text-align: center;
             width: 100%;
         }
         .inflation-slide .label {
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: var(--text-secondary);
-            margin-bottom: 0.3rem;
+            margin-bottom: 0.1rem;
         }
         .inflation-slide .value {
-            font-size: 3.5rem;
+            font-size: 3rem;
             font-weight: 900;
         }
         .inflation-slide .current {
@@ -173,27 +173,27 @@
             color: var(--green);
         }
         .inflation-slide .arrow {
-            font-size: 2rem;
+            font-size: 1.5rem;
             color: var(--text-secondary);
-            margin: 0.5rem 0;
+            margin: 0.2rem 0;
         }
         .inflation-slide .gap-info {
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 700;
             color: var(--red);
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
         }
         .inflation-slide .status {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 700;
             color: var(--text-secondary);
             margin-bottom: 1rem;
         }
         .inflation-slide .note {
             background: #FFF3E0;
-            padding: 1rem;
+            padding: 0.8rem;
             border-radius: 0.75rem;
-            font-size: 1rem;
+            font-size: 0.9rem;
             color: #E65100;
             border: 2px solid #FFB74D;
         }
@@ -213,7 +213,7 @@
             border-radius: 0.75rem;
             margin-bottom: 1rem;
             border: 2px solid var(--muji-light-grey);
-            min-height: 120px;
+            height: 130px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -236,10 +236,10 @@
             text-align: center;
             font-size: 2.5rem;
             color: var(--pwc-orange);
-            margin: 1rem 0;
+            margin: 0.5rem 0;
         }
 
-        /* Trade-off 슬라이드 */
+        /* Trade-off 슬라이드 (수정됨) */
         .tradeoff-slide {
             padding: 2.5rem 1.5rem;
         }
@@ -264,12 +264,20 @@
         .tradeoff-slide .metric {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 0.5rem;
-            font-size: 1rem;
+            align-items: center;
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+        .tradeoff-slide .arrow-up {
+            color: var(--red);
+        }
+        .tradeoff-slide .arrow-down {
+            color: var(--green);
         }
         .tradeoff-slide .direction {
             text-align: center;
-            margin-top: 0.75rem;
+            margin-top: 1rem;
             font-size: 1rem;
             font-weight: 700;
             color: var(--text-secondary);
@@ -316,93 +324,36 @@
             font-weight: 700;
             color: var(--pwc-orange);
         }
-
-        /* 비교 슬라이드 */
-        .compare-slide {
+        
+        /* 정의 슬라이드 */
+        .definition-slide {
             padding: 2.5rem 1.5rem;
         }
-        .compare-slide .title {
-            font-size: 1.8rem;
-            font-weight: 900;
-            color: var(--text-primary);
-            margin-bottom: 2rem;
-        }
-        .compare-slide .compare-box {
-            width: 100%;
-            background: white;
-            padding: 1.5rem;
-            border-radius: 1rem;
-            border: 2px solid var(--muji-light-grey);
-        }
-        .compare-slide .compare-item {
-            margin-bottom: 1.5rem;
-        }
-        .compare-slide .compare-item:last-child {
-            margin-bottom: 0;
-        }
-        .compare-slide .label {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-            margin-bottom: 0.5rem;
-        }
-        .compare-slide .bank-name {
-            font-size: 1.3rem;
-            font-weight: 900;
-            margin-bottom: 0.5rem;
-        }
-        .compare-slide .goals {
-            font-size: 1rem;
-            font-weight: 700;
-            padding: 0.5rem;
-            border-radius: 0.5rem;
-            margin-bottom: 0.5rem;
-        }
-        .compare-slide .single-goal {
-            background: #FFF3E0;
-            color: #E65100;
-        }
-        .compare-slide .dual-goal {
-            background: #E8F5E9;
-            color: var(--green);
-        }
-        .compare-slide .note {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-        }
-        .compare-slide hr {
-            border: none;
-            height: 2px;
-            background-color: var(--muji-light-grey);
-            margin: 1rem 0;
-        }
-
-        /* 결론 슬라이드 */
-        .conclusion-slide {
-            padding: 2.5rem 1.5rem;
-        }
-        .conclusion-slide .title {
-            font-size: 1.8rem;
-            font-weight: 900;
-            margin-bottom: 1.5rem;
-        }
-        .conclusion-slide .qa-item {
-            background: white;
-            padding: 1rem;
-            border-radius: 0.75rem;
+        .definition-slide .icon {
+            font-size: 3.5rem;
             margin-bottom: 1rem;
-            border: 2px solid var(--muji-light-grey);
         }
-        .conclusion-slide .question {
-            font-size: 1.05rem;
-            font-weight: 700;
-            color: var(--text-secondary);
-            margin-bottom: 0.5rem;
-        }
-        .conclusion-slide .answer {
-            font-size: 1.15rem;
+        .definition-slide h2 {
+            font-size: 2.5rem;
             font-weight: 900;
             color: var(--pwc-orange);
-            line-height: 1.4;
+            margin-bottom: 0.8rem;
+        }
+        .definition-slide p {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1.5;
+            margin-bottom: 1.5rem;
+        }
+        .definition-slide .formula {
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--text-secondary);
+            background-color: #ffffff;
+            padding: 0.75rem 1.2rem;
+            border-radius: 0.5rem;
+            border: 1px solid var(--muji-light-grey);
         }
 
         /* 요약 슬라이드 */
@@ -490,8 +441,8 @@
                 current: "2.9%",
                 target: "2.0%",
                 gap: "0.9%p 차이",
-                status: "아직 높지만...",
-                note: "관세 제외하면 거의 목표 수준"
+                status: "아직 목표보다 높지만...",
+                note: "관세를 제외하면 거의 잡혔다고 판단"
             }
         },
         {
@@ -500,12 +451,12 @@
             content: {
                 title: "파월의 선택",
                 optionA: {
-                    label: "남은 0.9%p까지<br>완전히 제거",
-                    risk: "고용 시장 붕괴<br>경기 침체 위험"
+                    label: "A) 물가 2.0% 완벽 제압",
+                    risk: "⚠️ 고용 시장 붕괴, 경기 침체 위험"
                 },
                 optionB: {
-                    label: "2.9%에서<br>만족하고 멈춤",
-                    benefit: "고용 보호<br>경기 침체 회피"
+                    label: "B) 2.9%에서 타협",
+                    benefit: "✅ 고용 보호, 경기 침체 회피"
                 },
                 choice: "B를 선택!"
             }
@@ -517,15 +468,15 @@
                 title: "이중 책무의 딜레마",
                 before: {
                     label: "이전 (2023-24)",
-                    inflation: "↑↑ 위험",
-                    employment: "○ 안전",
-                    direction: "→ 금리 올림"
+                    inflation: '<span class="arrow-up">↑↑</span>',
+                    employment: '<span class="arrow-down">↑↑</span>',
+                    direction: "→ 금리 인상 (물가 잡기)"
                 },
                 now: {
                     label: "현재 (2025.10)",
-                    inflation: "○ 낮아지는 중",
-                    employment: "↓↓ 위험!",
-                    direction: "→ 금리 내림"
+                    inflation: '<span class="arrow-down">↓↓</span>',
+                    employment: '<span class="arrow-up">↓↓</span>',
+                    direction: "→ 금리 인하 (고용 지키기)"
                 }
             }
         },
@@ -543,47 +494,23 @@
             }
         },
         {
-            type: 'compare',
+            type: 'definition', // 핵심 포인트 슬라이드 (저울)
             duration: 4500,
             content: {
-                title: "미국 연준의 특별함",
-                items: [
-                    { 
-                        flag: '🇩🇪🇪🇺',
-                        name: '분데스방크·ECB',
-                        goals: '물가 안정',
-                        type: 'single',
-                        note: '물가만 보면 됨'
-                    },
-                    { 
-                        flag: '🇺🇸',
-                        name: '미국 연준',
-                        goals: '물가 + 고용',
-                        type: 'dual',
-                        note: '둘 다 봐야 함 → 훨씬 어려움!'
-                    }
-                ]
+                icon: '⚖️',
+                title: '핵심 포인트',
+                description: '물가 잡기 (완벽하지는 않지만) ✓<br>→ 이제는 고용 지키기',
+                formula: '연준의 이중 책무 이행'
             }
         },
         {
-            type: 'conclusion',
-            duration: 5000,
+            type: 'definition', // QT 종료 슬라이드 (물방울)
+            duration: 4500,
             content: {
-                title: "핵심 포인트",
-                points: [
-                    { 
-                        q: "물가 잡혔나?",
-                        a: "충분히 (2.9% → 관세 빼면 ~2.2%)"
-                    },
-                    {
-                        q: "고용은?",
-                        a: "위험 증가 중 🚨"
-                    },
-                    {
-                        q: "왜 QT 끝?",
-                        a: "고용 보호 > 완벽한 물가<br>이중 책무 균형 ⚖️"
-                    }
-                ]
+                icon: '💧',
+                title: '왜 QT를 끝내나?',
+                description: '3년이상 잠갔던 수도꼭지,<br>더 잠그면 경제가 마르니까!',
+                formula: '고용 보호 > 완벽한 물가'
             }
         },
         {
@@ -660,12 +587,12 @@
                     <div class="slide-content choice-slide">
                         <div class="title">${slide.content.title}</div>
                         <div class="option">
-                            <div class="option-label">A) ${slide.content.optionA.label}</div>
-                            <div class="option-detail">⚠️ ${slide.content.optionA.risk}</div>
+                            <div class="option-label">${slide.content.optionA.label}</div>
+                            <div class="option-detail">${slide.content.optionA.risk}</div>
                         </div>
                         <div class="option chosen">
-                            <div class="option-label">B) ${slide.content.optionB.label}</div>
-                            <div class="option-detail">✅ ${slide.content.optionB.benefit}</div>
+                            <div class="option-label">${slide.content.optionB.label}</div>
+                            <div class="option-detail">${slide.content.optionB.benefit}</div>
                         </div>
                         <div class="choice-arrow">👇</div>
                         <div style="font-size: 1.5rem; font-weight: 900; color: var(--pwc-orange);">${slide.content.choice}</div>
@@ -719,38 +646,16 @@
                     </div>`;
                 break;
             
-            case 'compare':
-                html = `
-                    <div class="slide-content compare-slide">
-                        <div class="title">${slide.content.title}</div>
-                        <div class="compare-box">
-                            ${slide.content.items.map(item => `
-                                <div class="compare-item">
-                                    <div class="label">목표</div>
-                                    <div class="bank-name">${item.flag} ${item.name}</div>
-                                    <div class="goals ${item.type === 'single' ? 'single-goal' : 'dual-goal'}">
-                                        ${item.goals}
-                                    </div>
-                                    <div class="note">${item.note}</div>
-                                </div>
-                            `).join('<hr>')}
-                        </div>
+            case 'definition':
+                 html = `
+                    <div class="slide-content definition-slide">
+                        ${slide.content.icon ? `<div class="icon">${slide.content.icon}</div>` : ''}
+                        <h2>${slide.content.title}</h2>
+                        <p>${slide.content.description}</p>
+                        <div class="formula">${slide.content.formula}</div>
                     </div>`;
                 break;
-            
-            case 'conclusion':
-                html = `
-                    <div class="slide-content conclusion-slide">
-                        <div class="title">${slide.content.title}</div>
-                        ${slide.content.points.map(p => `
-                            <div class="qa-item">
-                                <div class="question">${p.q}</div>
-                                <div class="answer">${p.a}</div>
-                            </div>
-                        `).join('')}
-                    </div>`;
-                break;
-            
+
             case 'summary':
                 html = `
                     <div class="slide-content summary-slide">
