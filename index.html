@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>파월 의장 비둘기파 전향 완벽 분석</title>
+    <title>파월 의장 긴축 종료 선언 완벽 분석</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
@@ -148,19 +148,22 @@
         }
         .inflation-slide .numbers {
             display: flex;
-            justify-content: space-around;
-            margin-bottom: 2rem;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
         }
         .inflation-slide .number-box {
             text-align: center;
+            width: 100%;
         }
         .inflation-slide .label {
-            font-size: 1rem;
+            font-size: 1.1rem;
             color: var(--text-secondary);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.3rem;
         }
         .inflation-slide .value {
-            font-size: 3rem;
+            font-size: 3.5rem;
             font-weight: 900;
         }
         .inflation-slide .current {
@@ -169,8 +172,16 @@
         .inflation-slide .target {
             color: var(--green);
         }
-        .inflation-slide .gap {
+        .inflation-slide .arrow {
+            font-size: 2rem;
+            color: var(--text-secondary);
+            margin: 0.5rem 0;
+        }
+        .inflation-slide .gap-info {
+            font-size: 1.1rem;
+            font-weight: 700;
             color: var(--red);
+            margin-bottom: 1rem;
         }
         .inflation-slide .status {
             font-size: 1.2rem;
@@ -202,6 +213,10 @@
             border-radius: 0.75rem;
             margin-bottom: 1rem;
             border: 2px solid var(--muji-light-grey);
+            min-height: 120px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
         .choice-slide .option-label {
             font-size: 1.2rem;
@@ -361,42 +376,6 @@
             margin: 1rem 0;
         }
 
-        /* QT 슬라이드 */
-        .qt-slide {
-            padding: 2.5rem 1.5rem;
-        }
-        .qt-slide .icon {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-        }
-        .qt-slide h2 {
-            font-size: 2.5rem;
-            font-weight: 900;
-            color: var(--pwc-orange);
-            margin-bottom: 0.8rem;
-        }
-        .qt-slide .subtitle {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-        }
-        .qt-slide p {
-            font-size: 1.15rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            line-height: 1.5;
-            margin-bottom: 1.5rem;
-        }
-        .qt-slide .formula {
-            font-size: 1rem;
-            font-weight: 400;
-            color: var(--text-secondary);
-            background-color: #ffffff;
-            padding: 0.75rem 1.2rem;
-            border-radius: 0.5rem;
-            border: 1px solid var(--muji-light-grey);
-        }
-
         /* 결론 슬라이드 */
         .conclusion-slide {
             padding: 2.5rem 1.5rem;
@@ -414,15 +393,16 @@
             border: 2px solid var(--muji-light-grey);
         }
         .conclusion-slide .question {
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             font-weight: 700;
             color: var(--text-secondary);
             margin-bottom: 0.5rem;
         }
         .conclusion-slide .answer {
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             font-weight: 900;
             color: var(--pwc-orange);
+            line-height: 1.4;
         }
 
         /* 요약 슬라이드 */
@@ -485,8 +465,8 @@
             type: 'title',
             duration: 3500,
             content: {
-                title: `파월의<br><span class="highlight">비둘기파 전향</span>`,
-                subtitle: "물가 vs 고용<br>선택의 순간",
+                title: `파월의<br><span class="highlight">"긴축 끝"</span> 선언`,
+                subtitle: "3년 넘게 계속된 긴축<br>드디어 마무리 단계",
                 date: "2025.10.14 NABE 연설"
             }
         },
@@ -497,7 +477,7 @@
                 title: "3개월간의 변화",
                 items: [
                     { date: '7월', title: '금리 동결', desc: '트럼프 압박 속 독립성 수호' },
-                    { date: '9월', title: '0.25%p 인하', desc: '매파→비둘기파 전환 시작' },
+                    { date: '9월', title: '0.25%p 인하', desc: '경제 데이터 반영 시작' },
                     { date: '10월', title: '완화 신호 명확화', desc: '고용이 더 중요해졌다' }
                 ]
             }
@@ -509,7 +489,7 @@
                 title: "물가는 잡혔나?",
                 current: "2.9%",
                 target: "2.0%",
-                gap: "0.9%p",
+                gap: "0.9%p 차이",
                 status: "아직 높지만...",
                 note: "관세 제외하면 거의 목표 수준"
             }
@@ -525,7 +505,7 @@
                 },
                 optionB: {
                     label: "2.9%에서<br>만족하고 멈춤",
-                    benefit: "고용 보호<br>연착륙 가능"
+                    benefit: "고용 보호<br>경기 침체 회피"
                 },
                 choice: "B를 선택!"
             }
@@ -538,14 +518,14 @@
                 before: {
                     label: "이전 (2023-24)",
                     inflation: "↑↑ 위험",
-                    employment: "↑↑ 안전",
-                    direction: "→ 둘 다 긴축"
+                    employment: "○ 안전",
+                    direction: "→ 금리 올림"
                 },
                 now: {
                     label: "현재 (2025.10)",
-                    inflation: "↓ 낮아지는 중",
+                    inflation: "○ 낮아지는 중",
                     employment: "↓↓ 위험!",
-                    direction: "→ 반대로 당김"
+                    direction: "→ 금리 내림"
                 }
             }
         },
@@ -564,7 +544,7 @@
         },
         {
             type: 'compare',
-            duration: 5000,
+            duration: 4500,
             content: {
                 title: "미국 연준의 특별함",
                 items: [
@@ -586,17 +566,6 @@
             }
         },
         {
-            type: 'qt',
-            duration: 4500,
-            content: {
-                icon: '💧',
-                title: 'QT 9월 종료',
-                subtitle: '(양적긴축 종료)',
-                description: '2019년 자금경색<br>재발 방지',
-                formula: '더 이상 돈 안 거둠'
-            }
-        },
-        {
             type: 'conclusion',
             duration: 5000,
             content: {
@@ -604,27 +573,27 @@
                 points: [
                     { 
                         q: "물가 잡혔나?",
-                        a: "충분히 (2.9%, 관세 제외시 ~2.2%)"
+                        a: "충분히 (2.9% → 관세 빼면 ~2.2%)"
                     },
                     {
                         q: "고용은?",
                         a: "위험 증가 중 🚨"
                     },
                     {
-                        q: "파월 선택은?",
-                        a: "고용 보호 > 완벽한 물가"
+                        q: "왜 QT 끝?",
+                        a: "고용 보호 > 완벽한 물가<br>이중 책무 균형 ⚖️"
                     }
                 ]
             }
         },
         {
             type: 'summary',
-            duration: 5000,
+            duration: 4500,
             content: {
                 title: "우리에게 미치는 영향",
                 items: [
-                    { icon: '📉', label: '금리', value: '하락 확실' },
-                    { icon: '📈', label: '주식·코인', value: '강세 지속' }
+                    { icon: '📉', label: '금리', value: '하락 ↓' },
+                    { icon: '📈', label: '주식·코인', value: '상승 기대 ↑' }
                 ]
             }
         }
@@ -673,13 +642,12 @@
                                 <div class="label">현재</div>
                                 <div class="value current">${slide.content.current}</div>
                             </div>
+                            <div class="arrow">↓</div>
+                            <div class="gap-info">${slide.content.gap}</div>
+                            <div class="arrow">↓</div>
                             <div class="number-box">
                                 <div class="label">목표</div>
                                 <div class="value target">${slide.content.target}</div>
-                            </div>
-                            <div class="number-box">
-                                <div class="label">차이</div>
-                                <div class="value gap">${slide.content.gap}</div>
                             </div>
                         </div>
                         <div class="status">${slide.content.status}</div>
@@ -767,17 +735,6 @@
                                 </div>
                             `).join('<hr>')}
                         </div>
-                    </div>`;
-                break;
-            
-            case 'qt':
-                html = `
-                    <div class="slide-content qt-slide">
-                        ${slide.content.icon ? `<div class="icon">${slide.content.icon}</div>` : ''}
-                        <h2>${slide.content.title}</h2>
-                        ${slide.content.subtitle ? `<div class="subtitle">${slide.content.subtitle}</div>` : ''}
-                        <p>${slide.content.description}</p>
-                        <div class="formula">${slide.content.formula}</div>
                     </div>`;
                 break;
             
