@@ -834,8 +834,7 @@
         const elapsedDuration = slidesData.slice(0, currentSlideIndex + 1).reduce((acc, s) => acc + s.duration, 0);
         
         requestAnimationFrame(() => {
-             progressBar.style.width = `${
-                 progressBar.style.width = `${(elapsedDuration / totalDuration) * 100}%`;
+             progressBar.style.width = `${(elapsedDuration / totalDuration) * 100}%`;
         });
         
         currentSlideIndex++;
