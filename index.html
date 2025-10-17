@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>파월 의장 긴축 종료 선언 완벽 분석</title>
+    <title>기축통화 완벽 가이드</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
@@ -16,6 +16,7 @@
             --text-secondary: #555555;
             --green: #2D7D2D;
             --red: #C62828;
+            --blue: #0250D0;
         }
         body {
             font-family: 'Pretendard', sans-serif;
@@ -73,7 +74,15 @@
             transform: translateY(0);
         }
 
-        /* 타이틀 슬라이드 */
+        /* Common Styles */
+        .slide-title {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Title Slide */
         .title-slide h1 {
             font-size: 2.3rem;
             font-weight: 900;
@@ -90,388 +99,66 @@
             color: var(--text-secondary);
             line-height: 1.4;
         }
-        .title-slide .date {
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-            margin-top: 1rem;
-            opacity: 0.8;
-        }
-
-        /* 타임라인 슬라이드 */
-        .timeline-slide {
-            justify-content: flex-start;
-            padding-top: 3.5rem;
-        }
-        .timeline-slide .timeline-container {
-            width: 100%;
-        }
-        .timeline-slide .timeline-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1.8rem;
-            background: white;
-            padding: 1rem;
-            border-radius: 0.75rem;
-            border: 2px solid var(--muji-light-grey);
-        }
-        .timeline-slide .timeline-item .date {
-            font-size: 1.3rem;
-            font-weight: 900;
-            color: var(--pwc-orange);
-            min-width: 80px;
-        }
-        .timeline-slide .timeline-item .content {
-            flex: 1;
-            text-align: left;
-            padding-left: 1rem;
-        }
-        .timeline-slide .timeline-item .title {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 0.3rem;
-        }
-        .timeline-slide .timeline-item .desc {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-        }
-
-        /* --- 비교 슬라이드 (스타일 수정) --- */
-        .compare-slide {
-            padding: 2.5rem 1.5rem;
-        }
-        .compare-slide .title {
-            font-size: 1.8rem;
-            font-weight: 900;
-            color: var(--text-primary);
-            margin-bottom: 2rem;
-        }
-        .compare-slide .compare-box {
-            width: 100%;
-            background: white;
-            padding: 1.5rem;
-            border-radius: 1rem;
-            border: 2px solid var(--muji-light-grey);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-        }
-        .compare-slide .compare-item {
-            margin-bottom: 1.5rem;
-        }
-        .compare-slide .compare-item:last-child {
-            margin-bottom: 0;
-        }
-        .compare-slide .label {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-            margin-bottom: 0.5rem;
-            text-align: center; /* 가운데 정렬 */
-        }
-        .compare-slide .bank-name {
-            font-size: 1.3rem;
-            font-weight: 900;
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center; /* 가운데 정렬 */
-            gap: 0.5rem;
-        }
-        .compare-slide .goal-wrapper {
-            text-align: center;
-            margin-top: 1rem;
-        }
-        .compare-slide .goals {
-            font-size: 1rem;
-            font-weight: 700;
-            padding: 0.75rem;
-            border-radius: 0.5rem;
-            display: block; /* 너비 100%로 변경 */
-            width: 100%;
-        }
-        .compare-slide .goal-desc {
-            font-size: 0.9rem;
-            font-weight: 700;
-            color: var(--text-secondary);
-            margin-top: 0.75rem;
-        }
-        .compare-slide .single-goal {
-            background: #FFF3E0;
-            color: #E65100;
-        }
-        .compare-slide .dual-goal {
-            background: #E8F5E9;
-            color: var(--green);
-        }
-        .compare-slide hr {
-            border: none;
-            height: 1px;
-            background-color: var(--muji-light-grey);
-            margin: 1.5rem 0;
-        }
-        /* --- 비교 슬라이드 끝 --- */
-
-        /* 인플레이션 슬라이드 */
-        .inflation-slide {
-            padding: 2.5rem 1.5rem;
-        }
-        .inflation-slide .title {
-            font-size: 1.8rem;
-            font-weight: 900;
-            color: var(--text-primary);
-            margin-bottom: 1.5rem;
-        }
-        .inflation-slide .numbers {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-        }
-        .inflation-slide .number-box {
-            text-align: center;
-            width: 100%;
-        }
-        .inflation-slide .label {
-            font-size: 1rem;
-            color: var(--text-secondary);
-            margin-bottom: 0.1rem;
-        }
-        .inflation-slide .value {
-            font-size: 3rem;
-            font-weight: 900;
-        }
-        .inflation-slide .current {
-            color: var(--pwc-orange);
-        }
-        .inflation-slide .target {
-            color: var(--green);
-        }
-        .inflation-slide .arrow {
-            font-size: 1.5rem;
-            color: var(--text-secondary);
-            margin: 0.2rem 0;
-        }
-        .inflation-slide .gap-info {
-            font-size: 1rem;
-            font-weight: 700;
-            color: var(--red);
-            margin-bottom: 0.8rem;
-        }
-        .inflation-slide .status {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--text-secondary);
-            margin-bottom: 1rem;
-        }
-        .inflation-slide .note {
-            background: #FFF3E0;
-            padding: 0.8rem;
-            border-radius: 0.75rem;
-            font-size: 0.9rem;
-            color: #E65100;
-            border: 2px solid #FFB74D;
-        }
-
-        /* 선택 슬라이드 */
-        .choice-slide {
-            padding: 2rem 1.5rem;
-        }
-        .choice-slide .title {
-            font-size: 1.8rem;
-            font-weight: 900;
-            margin-bottom: 1.5rem;
-        }
-        .choice-slide .option {
-            background: white;
-            padding: 1.2rem;
-            border-radius: 0.75rem;
-            margin-bottom: 1rem;
-            border: 2px solid var(--muji-light-grey);
-            height: 130px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-        .choice-slide .option-label {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 0.5rem;
-        }
-        .choice-slide .option-detail {
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-        }
-        .choice-slide .chosen {
-            border-color: var(--pwc-orange);
-            background: #FFF3E0;
-        }
-        .choice-slide .choice-arrow {
-            text-align: center;
-            font-size: 2.5rem;
-            color: var(--pwc-orange);
-            margin: 0.5rem 0;
-        }
-
-        /* Trade-off 슬라이드 */
-        .tradeoff-slide {
-            padding: 2.5rem 1.5rem;
-        }
-        .tradeoff-slide .title {
-            font-size: 1.8rem;
-            font-weight: 900;
-            margin-bottom: 1.5rem;
-        }
-        .tradeoff-slide .period {
-            background: white;
-            padding: 1.2rem;
-            border-radius: 0.75rem;
-            margin-bottom: 1rem;
-            border: 2px solid var(--muji-light-grey);
-        }
-        .tradeoff-slide .period-label {
-            font-size: 1.1rem;
-            font-weight: 900;
-            color: var(--pwc-orange);
-            margin-bottom: 1rem;
-        }
-        .tradeoff-slide .metric {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 0.8rem;
-            font-size: 1.2rem;
-            font-weight: 700;
-        }
-        .tradeoff-slide .arrow-up {
-            color: var(--red);
-        }
-        .tradeoff-slide .arrow-down {
-            color: var(--green);
-        }
-        .tradeoff-slide .direction {
-            text-align: center;
-            margin-top: 1rem;
-            font-size: 1rem;
-            font-weight: 700;
-            color: var(--text-secondary);
-        }
-
-        /* 고용 슬라이드 */
-        .employment-slide {
-            padding: 2.5rem 1.5rem;
-        }
-        .employment-slide .title {
-            font-size: 1.8rem;
-            font-weight: 900;
-            color: var(--text-primary);
-            margin-bottom: 1.5rem;
-        }
-        .employment-slide .crisis-box {
-            background: #FFEBEE;
-            padding: 1.2rem;
-            border-radius: 0.75rem;
-            border: 2px solid #EF9A9A;
-            margin-bottom: 1.5rem;
-        }
-        .employment-slide .signal-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 0.8rem;
-            font-size: 1rem;
-            color: var(--red);
-            font-weight: 700;
-        }
-        .employment-slide .signal-item:last-child {
-            margin-bottom: 0;
-        }
-        .employment-slide .signal-icon {
-            font-size: 1.5rem;
-            margin-right: 0.75rem;
-        }
-        .employment-slide .conclusion {
-            background: white;
-            padding: 1rem;
-            border-radius: 0.75rem;
-            border: 2px solid var(--pwc-orange);
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--pwc-orange);
-        }
         
-        /* 정의 슬라이드 */
-        .definition-slide {
-            padding: 2.5rem 1.5rem;
-        }
-        .definition-slide .icon {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-        }
-        .definition-slide h2 {
-            font-size: 2.5rem;
-            font-weight: 900;
-            color: var(--pwc-orange);
-            margin-bottom: 0.8rem;
-        }
-        .definition-slide p {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            line-height: 1.5;
-            margin-bottom: 1.5rem;
-        }
-        .definition-slide .formula {
-            font-size: 1rem;
-            font-weight: 400;
-            color: var(--text-secondary);
-            background-color: #ffffff;
-            padding: 0.75rem 1.2rem;
-            border-radius: 0.5rem;
-            border: 1px solid var(--muji-light-grey);
-        }
+        /* Definition Slide */
+        .definition-slide { padding: 2.5rem 1.5rem; }
+        .definition-slide .icon { font-size: 3.5rem; margin-bottom: 1rem; }
+        .definition-slide h2 { font-size: 2.5rem; font-weight: 900; color: var(--pwc-orange); margin-bottom: 0.8rem; }
+        .definition-slide p { font-size: 1.2rem; font-weight: 700; color: var(--text-primary); line-height: 1.5; margin-bottom: 1.5rem; }
+        .definition-slide .formula { font-size: 1rem; font-weight: 400; color: var(--text-secondary); background-color: #ffffff; padding: 0.75rem 1.2rem; border-radius: 0.5rem; border: 1px solid var(--muji-light-grey); }
 
-        /* 요약 슬라이드 */
-        .summary-slide .summary-box {
-            width: 100%;
-            background-color: #fff;
-            padding: 2rem;
-            border-radius: 1rem;
-            border: 2px solid var(--muji-light-grey);
-        }
-        .summary-slide .summary-item {
-            text-align: center;
-            padding: 1rem 0;
-        }
-        .summary-slide .summary-item .icon {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-        }
-        .summary-slide .summary-item .label {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--text-secondary);
-        }
-        .summary-slide .summary-item .value {
-            font-size: 2rem;
-            font-weight: 900;
-            color: var(--pwc-orange);
-            margin-top: 0.3rem;
-        }
-        .summary-slide hr {
-            border: none;
-            height: 2px;
-            background-color: var(--muji-light-grey);
-            margin: 1rem 0;
-        }
+        /* Timeline Slide */
+        .timeline-slide { justify-content: flex-start; padding-top: 5rem; }
+        .timeline-slide .timeline-title { position: absolute; top: 3.5rem; font-size: 1.8rem; font-weight: 900; color: var(--text-primary); }
+        .timeline-slide .timeline-container { width: 100%; }
+        .timeline-slide .timeline-item { display: flex; align-items: center; margin-bottom: 1.8rem; background: white; padding: 1rem; border-radius: 0.75rem; border: 2px solid var(--muji-light-grey); }
+        .timeline-slide .timeline-item .date { font-size: 1.3rem; font-weight: 900; color: var(--pwc-orange); min-width: 80px; }
+        .timeline-slide .timeline-item .content { flex: 1; text-align: left; padding-left: 1rem; }
+        .timeline-slide .timeline-item .title { font-size: 1.1rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.3rem; }
+        .timeline-slide .timeline-item .desc { font-size: 0.9rem; color: var(--text-secondary); }
 
-        .footer {
-            position: absolute;
-            bottom: 1.5rem;
-            width: 100%;
-            text-align: center;
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            font-weight: 700;
-        }
+        /* Choice Slide */
+        .choice-slide { padding: 2rem 1.5rem; }
+        .choice-slide .option { background: white; padding: 1.2rem; border-radius: 0.75rem; margin-bottom: 1rem; border: 2px solid var(--muji-light-grey); display: flex; flex-direction: column; justify-content: center; }
+        .choice-slide .option-label { font-size: 1.2rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem; }
+        .choice-slide .option-detail { font-size: 0.95rem; color: var(--text-secondary); }
+        .choice-slide .chosen { border-color: var(--pwc-orange); background: #FFF3E0; }
+        .choice-slide .choice-arrow { text-align: center; font-size: 2.5rem; color: var(--pwc-orange); margin: 0.5rem 0; }
+        
+        /* Privilege/Limit Slide */
+        .privilege-slide { padding: 2.5rem 1.5rem; }
+        .privilege-slide .privilege-box { background: #E3F2FD; padding: 1.2rem; border-radius: 0.75rem; border: 2px solid #90CAF9; margin-bottom: 1.5rem; }
+        .privilege-slide .limit-box { background: #FFFDE7; padding: 1.2rem; border-radius: 0.75rem; border: 2px solid #FFF59D; margin-bottom: 1.5rem; }
+        .privilege-slide .signal-item { display: flex; align-items: center; margin-bottom: 0.8rem; font-size: 1.1rem; font-weight: 700; text-align: left; }
+        .privilege-slide .privilege-box .signal-item { color: #1565C0; }
+        .privilege-slide .limit-box .signal-item { color: #F9A825; }
+        .privilege-slide .signal-item:last-child { margin-bottom: 0; }
+        .privilege-slide .signal-icon { font-size: 1.5rem; margin-right: 0.75rem; }
+        .privilege-slide .conclusion { background: white; padding: 1rem; border-radius: 0.75rem; border: 2px solid var(--blue); font-size: 1.2rem; font-weight: 700; color: var(--blue); }
+        .privilege-slide .limit-conclusion { border-color: #FBC02D; color: #FBC02D; }
+
+        /* Compare Slide */
+        .compare-slide { padding: 2.5rem 1.5rem; }
+        .compare-slide .compare-box { width: 100%; background: white; padding: 1.5rem; border-radius: 1rem; border: 2px solid var(--muji-light-grey); box-shadow: 0 4px 15px rgba(0,0,0,0.08); }
+        .compare-slide .compare-item { margin-bottom: 1rem; }
+        .compare-slide .compare-item:last-child { margin-bottom: 0; }
+        .compare-slide .bank-name { font-size: 1.3rem; font-weight: 900; margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem; }
+        .compare-slide .goals { font-size: 1rem; font-weight: 700; padding: 0.5rem; border-radius: 0.5rem; display: block; width: 100%; }
+        .compare-slide .goal-desc { font-size: 0.9rem; font-weight: 700; color: var(--text-secondary); margin-top: 0.5rem; }
+        .compare-slide .single-goal { background: #E3F2FD; color: #0D47A1; }
+        .compare-slide .dual-goal { background: #FFEBEE; color: #B71C1C; }
+        .compare-slide .vs { font-size: 1.5rem; font-weight: 900; color: var(--pwc-orange); margin: 0.5rem 0; }
+
+        /* Summary Slide */
+        .summary-slide { padding: 2.5rem 1.5rem; }
+        .summary-slide .summary-box { width: 100%; background-color: #fff; padding: 2rem; border-radius: 1rem; border: 2px solid var(--muji-light-grey); }
+        .summary-slide .summary-item { text-align: center; padding: 1rem 0; }
+        .summary-slide .summary-item .icon { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        .summary-slide .summary-item .label { font-size: 1.3rem; font-weight: 700; color: var(--text-secondary); }
+        .summary-slide .summary-item .value { font-size: 2rem; font-weight: 900; color: var(--pwc-orange); margin-top: 0.3rem; }
+        .summary-slide hr { border: none; height: 2px; background-color: var(--muji-light-grey); margin: 1rem 0; }
+
+        .footer { position: absolute; bottom: 1.5rem; width: 100%; text-align: center; font-size: 0.8rem; color: var(--text-secondary); font-weight: 700; }
     </style>
 </head>
 <body>
@@ -487,136 +174,209 @@
     const slidesData = [
         {
             type: 'title',
-            duration: 3500,
+            duration: 4000,
             content: {
-                title: `파월의<br><span class="highlight">"긴축 끝"</span> 선언`,
-                subtitle: "3년 넘게 계속된 긴축<br>드디어 마무리 단계",
-                date: "2025.10.14 NABE 연설"
-            }
-        },
-        {
-            type: 'timeline',
-            duration: 5000,
-            content: {
-                title: "3개월간의 변화",
-                items: [
-                    { date: '7월', title: '금리 동결', desc: '트럼프 압박 속 독립성 수호' },
-                    { date: '9월', title: '0.25%p 인하', desc: '경제 데이터 반영 시작' },
-                    { date: '10월', title: '완화 신호 명확화', desc: '고용이 더 중요해졌다' }
-                ]
-            }
-        },
-        { 
-            type: 'compare',
-            duration: 5000,
-            content: {
-                title: "미국 연준의 특별함",
-                items: [
-                    { 
-                        flag: '🇩🇪🇪🇺',
-                        name: '분데스방크·ECB',
-                        goals: '물가 안정',
-                        description: '물가만 보면 됨',
-                        type: 'single'
-                    },
-                    { 
-                        flag: '🇺🇸',
-                        name: '미국 연준',
-                        goals: '물가 + 고용',
-                        description: '둘 다 봐야 함 → 훨씬 어려움!',
-                        type: 'dual'
-                    }
-                ]
-            }
-        },
-        {
-            type: 'inflation',
-            duration: 5000,
-            content: {
-                title: "물가는 잡혔나?",
-                current: "2.9%",
-                target: "2.0%",
-                gap: "0.9%p 차이",
-                status: "아직 목표보다 높지만...",
-                note: "관세를 제외하면 거의 잡혔다고 판단"
-            }
-        },
-        {
-            type: 'choice',
-            duration: 5500,
-            content: {
-                title: "파월의 선택",
-                optionA: {
-                    label: "A) 물가 2.0% 완벽 제압",
-                    risk: "⚠️ 고용 시장 붕괴, 경기 침체 위험"
-                },
-                optionB: {
-                    label: "B) 2.9%에서 타협",
-                    benefit: "✅ 고용 보호, 경기 침체 회피"
-                },
-                choice: "B를 선택!"
-            }
-        },
-        {
-            type: 'tradeoff',
-            duration: 5000,
-            content: {
-                title: "이중 책무의 딜레마",
-                before: {
-                    label: "이전 (2023-24)",
-                    inflation: '<span class="arrow-up">↑↑</span>',
-                    employment: '<span class="arrow-down">↑↑</span>',
-                    direction: "→ 금리 인상 (물가 잡기)"
-                },
-                now: {
-                    label: "현재 (2025.10)",
-                    inflation: '<span class="arrow-down">↓↓</span>',
-                    employment: '<span class="arrow-up">↓↓</span>',
-                    direction: "→ 금리 인하 (고용 지키기)"
-                }
-            }
-        },
-        {
-            type: 'employment',
-            duration: 5000,
-            content: {
-                title: "고용 시장 경고등 🚨",
-                signals: [
-                    { icon: '💰', text: '임금 상승 급격히 둔화' },
-                    { icon: '👷', text: '노동 참여율 하락' },
-                    { icon: '😰', text: '구직 신뢰도 하락' }
-                ],
-                conclusion: "고용 하방 위험 증가"
-            }
-        },
-        {
-            type: 'definition', 
-            duration: 4500,
-            content: {
-                icon: '⚖️',
-                title: '핵심 포인트',
-                description: '물가 잡기 (완벽하지는 않지만) ✓<br>→ 이제는 고용 지키기',
-                formula: '연준의 이중 책무 이행'
+                title: `뉴스가 쉬워지는<br><span class="highlight">'기축통화'</span> 완벽 가이드`,
+                subtitle: "세계를 움직이는 돈의 힘,<br>핵심만 모아 알려드려요"
             }
         },
         {
             type: 'definition',
-            duration: 4500,
+            duration: 5000,
             content: {
-                icon: '💧',
-                title: '왜 QT를 끝내나?',
-                description: '3년이상 잠갔던 수도꼭지,<br>더 잠그면 경제가 마르니까!',
-                formula: '고용 보호 > 완벽한 물가'
+                icon: '🌐',
+                title: '기축통화?',
+                description: '나라끼리 거래할 때 쓰는<br>기준이 되는 \'세계 공용 화폐\'',
+                formula: '모든 나라가 달러로 물건을 사고 팔아요'
+            }
+        },
+        {
+            type: 'definition',
+            duration: 6000,
+            content: {
+                icon: '📏',
+                title: '역할 1: 기준 자',
+                description: '모든 돈의 가치를 재는<br>흔들리지 않는 \'기준 자\' 역할',
+                formula: '"그래서 달러로는 얼마인데?"'
+            }
+        },
+        {
+            type: 'definition',
+            duration: 6000,
+            content: {
+                icon: '🏦',
+                title: '역할 2: 비상금',
+                description: '각 나라의 중앙은행이<br>위기 대비용으로 쌓아두는 돈',
+                formula: '가장 안전한 달러를 최고로 선호해요'
+            }
+        },
+        {
+            type: 'definition',
+            duration: 6000,
+            content: {
+                icon: '⛽️',
+                title: '역할 3: 가격표',
+                description: '석유, 곡물 등 국제 상품은<br>모두 달러로 가격을 표시해요',
+                formula: '세계 공용 가격표'
+            }
+        },
+        {
+            type: 'timeline',
+            duration: 6000,
+            content: {
+                title: "왕좌의 주인들",
+                items: [
+                    { date: '19세기~', title: '🇬🇧 파운드 시대', desc: '해가지지 않는 나라, 대영제국' },
+                    { date: '1944년~', title: '🇺🇸 달러 시대', desc: '압도적인 힘으로 왕좌 교체' }
+                ]
+            }
+        },
+        {
+            type: 'definition',
+            duration: 8000,
+            content: {
+                icon: '✨🏦✨',
+                title: '금, 미국으로 몰리다',
+                description: '두 번의 세계대전을 거치며<br>전 세계 금의 70%가 미국으로!',
+                formula: '이 압도적 금이 신뢰의 바탕이 됩니다'
+            }
+        },
+        {
+            type: 'definition',
+            duration: 7000,
+            content: {
+                icon: '📜',
+                title: '달러, 왕이 되다',
+                description: '1944년 브레튼 우즈 협정<br>"달러는 금으로 바꿔줄게!" 약속',
+                formula: '금 1온스 = 35달러 고정'
+            }
+        },
+         {
+            type: 'definition',
+            duration: 8000,
+            content: {
+                icon: '👑',
+                title: '금환본위제',
+                description: '미국의 금을 믿고<br>전 세계가 달러를 쓰기 시작!',
+                formula: '바로 그 금, 뉴욕 연은 지하금고에?!'
+            }
+        },
+        {
+            type: 'definition',
+            duration: 7000,
+            content: {
+                icon: '📉',
+                title: '약속에 금이 가다',
+                description: '베트남 전쟁 비용 때문에<br>달러를 마구 찍어냈어요',
+                formula: '달러 총량 > 미국 보유 금 가치'
+            }
+        },
+        {
+            type: 'choice',
+            duration: 8000,
+            content: {
+                title: "닉슨의 선택 (1971년)",
+                optionA: { label: "A) 금 약속 지키기", risk: "⚠️ 미국 경제 파탄" },
+                optionB: { label: "B) 약속 포기하기", benefit: "✅ 미국 경제 보호" },
+                choice: "B 선택! → '닉슨 쇼크' 발발"
+            }
+        },
+        {
+            type: 'compare',
+            duration: 9000,
+            content: {
+                title: "같은 선언, 다른 결과",
+                items: [
+                    { flag: '🇬🇧', name: '영국 파운드', goals: '경제 위기로 금본위제 포기', description: '기축통화 지위 약화', type: 'dual' },
+                    { flag: '🇺🇸', name: '미국 달러', goals: '일방적으로 금태환 중단 선언', description: '오히려 패권 강화', type: 'single' }
+                ]
+            }
+        },
+        {
+            type: 'definition',
+            duration: 8000,
+            content: {
+                icon: '💱',
+                title: '새로운 시대의 시작',
+                description: '브레튼우즈 체제는 붕괴하고<br>세계는 변동환율제로 진입!',
+                formula: '이제 환율은 시장이 결정해요'
+            }
+        },
+        {
+            type: 'definition',
+            duration: 7000,
+            content: {
+                icon: '🤝',
+                title: '달러의 새 보증수표',
+                description: '금 대신 석유를 담보로!<br>"석유 사려면 달러가 필수!"',
+                formula: '페트로달러 시스템 구축'
+            }
+        },
+        {
+            type: 'privilege',
+            duration: 9000,
+            content: {
+                title: "👑 기축통화국의 특권",
+                signals: [
+                    { icon: '💸', text: '화폐 발행으로 공짜 이익 (시뇨리지)' },
+                    { icon: '🛡️', text: '외환 위기 걱정 없음' },
+                    { icon: '🚫', text: '강력한 금융 제재 무기' }
+                ],
+                conclusion: "이것이 바로 '과도한 특권'"
+            }
+        },
+        {
+            type: 'definition',
+            duration: 6000,
+            content: {
+                icon: '🤫',
+                title: '시뇨리지?',
+                description: '돈의 액면가에서<br>실제 제작 비용을 뺀 차익',
+                formula: '1달러 지폐로 1달러 물건을 사는 힘'
+            }
+        },
+        {
+            type: 'definition',
+            duration: 8000,
+            content: {
+                icon: '💬',
+                title: '금융 제재 무기?',
+                description: '전세계 은행들의 카톡방 \'SWIFT\'<br>이 망을 미국이 통제해요',
+                formula: '마음에 안들면? 단톡방에서 강퇴!'
+            }
+        },
+        {
+            type: 'definition',
+            duration: 8000,
+            content: {
+                icon: '🚄',
+                title: '도전자의 비밀무기',
+                description: '미국 고속도로(SWIFT)를 피해<br>새 KTX(디지털 위안화)를 건설 중!',
+                formula: '달러 패권에 대한 기술적 도전'
+            }
+        },
+        {
+            type: 'privilege',
+            duration: 10000,
+            content: {
+                title: "🇨🇳 위안화의 현실적 한계",
+                boxType: 'limit',
+                signals: [
+                    { icon: '🛂', text: '자본 유출입 통제' },
+                    { icon: '❓', text: '제도적 신뢰 부족' },
+                    { icon: '📊', text: '아직 낮은 국제 비중' }
+                ],
+                conclusion: "기축통화의 핵심은 '자유'와 '신뢰'"
             }
         },
         {
             type: 'summary',
-            duration: 4500,
+            duration: 8000,
             content: {
-                title: "우리에게 미치는 영향",
+                title: "그래서 우리에게는?",
                 items: [
-                    { icon: '📉', label: '금리', value: '하락 ↓' },
-                    { icon: '📈', label: '주식·코인', value: '상승 기대 ↑' }
+                    { icon: '💹', label: '환율', value: '달러 가치에 직접 영향' },
+                    { icon: '📈', label: '자산시장', value: '전 세계 경제를 좌우' }
                 ]
             }
         }
@@ -631,164 +391,42 @@
         let html = '';
         switch (slide.type) {
             case 'title':
-                html = `
-                    <div class="slide-content title-slide">
-                        <h1>${slide.content.title}</h1>
-                        <p>${slide.content.subtitle}</p>
-                        <p class="date">${slide.content.date}</p>
-                    </div>`;
+                html = `<div class="slide-content title-slide"><h1>${slide.content.title}</h1><p>${slide.content.subtitle}</p></div>`;
                 break;
-            
-            case 'timeline':
-                html = `
-                    <div class="slide-content timeline-slide">
-                        <div class="timeline-container">
-                            ${slide.content.items.map(item => `
-                                <div class="timeline-item">
-                                    <div class="date">${item.date}</div>
-                                    <div class="content">
-                                        <div class="title">${item.title}</div>
-                                        <div class="desc">${item.desc}</div>
-                                    </div>
-                                </div>
-                            `).join('')}
-                        </div>
-                    </div>`;
-                break;
-            
-            case 'compare':
-                html = `
-                    <div class="slide-content compare-slide">
-                        <div class="title">${slide.content.title}</div>
-                        <div class="compare-box">
-                            ${slide.content.items.map(item => `
-                                <div class="compare-item">
-                                    <div class="label">목표</div>
-                                    <div class="bank-name">
-                                        <span>${item.flag}</span>
-                                        <span>${item.name}</span>
-                                    </div>
-                                    <div class="goal-wrapper">
-                                        <div class="goals ${item.type === 'single' ? 'single-goal' : 'dual-goal'}">
-                                            ${item.goals}
-                                        </div>
-                                        <div class="goal-desc">${item.description}</div>
-                                    </div>
-                                </div>
-                            `).join('<hr>')}
-                        </div>
-                    </div>`;
-                break;
-            
-            case 'inflation':
-                html = `
-                    <div class="slide-content inflation-slide">
-                        <div class="title">${slide.content.title}</div>
-                        <div class="numbers">
-                            <div class="number-box">
-                                <div class="label">현재</div>
-                                <div class="value current">${slide.content.current}</div>
-                            </div>
-                            <div class="arrow">↓</div>
-                            <div class="gap-info">${slide.content.gap}</div>
-                            <div class="arrow">↓</div>
-                            <div class="number-box">
-                                <div class="label">목표</div>
-                                <div class="value target">${slide.content.target}</div>
-                            </div>
-                        </div>
-                        <div class="status">${slide.content.status}</div>
-                        <div class="note">${slide.content.note}</div>
-                    </div>`;
-                break;
-            
-            case 'choice':
-                html = `
-                    <div class="slide-content choice-slide">
-                        <div class="title">${slide.content.title}</div>
-                        <div class="option">
-                            <div class="option-label">${slide.content.optionA.label}</div>
-                            <div class="option-detail">${slide.content.optionA.risk}</div>
-                        </div>
-                        <div class="option chosen">
-                            <div class="option-label">${slide.content.optionB.label}</div>
-                            <div class="option-detail">${slide.content.optionB.benefit}</div>
-                        </div>
-                        <div class="choice-arrow">👇</div>
-                        <div style="font-size: 1.5rem; font-weight: 900; color: var(--pwc-orange);">${slide.content.choice}</div>
-                    </div>`;
-                break;
-            
-            case 'tradeoff':
-                html = `
-                    <div class="slide-content tradeoff-slide">
-                        <div class="title">${slide.content.title}</div>
-                        <div class="period">
-                            <div class="period-label">${slide.content.before.label}</div>
-                            <div class="metric">
-                                <span>물가</span>
-                                <span>${slide.content.before.inflation}</span>
-                            </div>
-                            <div class="metric">
-                                <span>고용</span>
-                                <span>${slide.content.before.employment}</span>
-                            </div>
-                            <div class="direction">${slide.content.before.direction}</div>
-                        </div>
-                        <div class="period">
-                            <div class="period-label">${slide.content.now.label}</div>
-                            <div class="metric">
-                                <span>물가</span>
-                                <span>${slide.content.now.inflation}</span>
-                            </div>
-                            <div class="metric">
-                                <span>고용</span>
-                                <span>${slide.content.now.employment}</span>
-                            </div>
-                            <div class="direction">${slide.content.now.direction}</div>
-                        </div>
-                    </div>`;
-                break;
-            
-            case 'employment':
-                html = `
-                    <div class="slide-content employment-slide">
-                        <div class="title">${slide.content.title}</div>
-                        <div class="crisis-box">
-                            ${slide.content.signals.map(s => `
-                                <div class="signal-item">
-                                    <span class="signal-icon">${s.icon}</span>
-                                    ${s.text}
-                                </div>
-                            `).join('')}
-                        </div>
-                        <div class="conclusion">${slide.content.conclusion}</div>
-                    </div>`;
-                break;
-            
             case 'definition':
-                 html = `
-                    <div class="slide-content definition-slide">
-                        ${slide.content.icon ? `<div class="icon">${slide.content.icon}</div>` : ''}
-                        <h2>${slide.content.title}</h2>
-                        <p>${slide.content.description}</p>
-                        <div class="formula">${slide.content.formula}</div>
-                    </div>`;
+                html = `<div class="slide-content definition-slide">${slide.content.icon ? `<div class="icon">${slide.content.icon}</div>` : ''}<h2>${slide.content.title}</h2><p>${slide.content.description}</p><div class="formula">${slide.content.formula}</div></div>`;
                 break;
-
-            case 'summary':
-                html = `
-                    <div class="slide-content summary-slide">
-                        <div class="summary-box">
-                            ${slide.content.items.map(item => `
-                                <div class="summary-item">
-                                    <div class="icon">${item.icon}</div>
-                                    <div class="label">${item.label}</div>
-                                    <div class="value">${item.value}</div>
-                                </div>
-                            `).join('<hr>')}
+            case 'timeline':
+                html = `<div class="slide-content timeline-slide"><div class="timeline-title">${slide.content.title}</div><div class="timeline-container">${slide.content.items.map(item => `<div class="timeline-item"><div class="date">${item.date}</div><div class="content"><div class="title">${item.title}</div><div class="desc">${item.desc}</div></div></div>`).join('')}</div></div>`;
+                break;
+            case 'choice':
+                html = `<div class="slide-content choice-slide"><div class="slide-title">${slide.content.title}</div><div class="option"><div class="option-label">${slide.content.optionA.label}</div><div class="option-detail">${slide.content.optionA.risk}</div></div><div class="option chosen"><div class="option-label">${slide.content.optionB.label}</div><div class="option-detail">${slide.content.optionB.benefit}</div></div><div class="choice-arrow">👇</div><div style="font-size: 1.5rem; font-weight: 900; color: var(--pwc-orange);">${slide.content.choice}</div></div>`;
+                break;
+            case 'privilege':
+                const boxClass = slide.content.boxType === 'limit' ? 'limit-box' : 'privilege-box';
+                const conclusionClass = slide.content.boxType === 'limit' ? 'conclusion limit-conclusion' : 'conclusion';
+                html = `<div class="slide-content privilege-slide"><div class="slide-title">${slide.content.title}</div><div class="${boxClass}">${slide.content.signals.map(s => `<div class="signal-item"><span class="signal-icon">${s.icon}</span>${s.text}</div>`).join('')}</div><div class="${conclusionClass}">${slide.content.conclusion}</div></div>`;
+                break;
+            case 'compare':
+                 html = `<div class="slide-content compare-slide">
+                    <div class="slide-title">${slide.content.title}</div>
+                    <div class="compare-box">
+                        <div class="compare-item">
+                            <div class="bank-name"><span>${slide.content.items[0].flag}</span><span>${slide.content.items[0].name}</span></div>
+                            <div class="goals ${slide.content.items[0].type === 'single' ? 'single-goal' : 'dual-goal'}">${slide.content.items[0].goals}</div>
+                            <div class="goal-desc">${slide.content.items[0].description}</div>
                         </div>
-                    </div>`;
+                        <div class="vs">VS</div>
+                        <div class="compare-item">
+                            <div class="bank-name"><span>${slide.content.items[1].flag}</span><span>${slide.content.items[1].name}</span></div>
+                            <div class="goals ${slide.content.items[1].type === 'single' ? 'single-goal' : 'dual-goal'}">${slide.content.items[1].goals}</div>
+                            <div class="goal-desc">${slide.content.items[1].description}</div>
+                        </div>
+                    </div>
+                </div>`;
+                break;
+            case 'summary':
+                html = `<div class="slide-content summary-slide"><div class="slide-title">${slide.content.title}</div><div class="summary-box">${slide.content.items.map(item => `<div class="summary-item"><div class="icon">${item.icon}</div><div class="label">${item.label}</div><div class="value">${item.value}</div></div>`).join('<hr>')}</div></div>`;
                 break;
         }
         return html;
@@ -798,9 +436,8 @@
         if (currentSlideIndex >= slidesData.length) {
             setTimeout(() => {
                 currentSlideIndex = 0;
-                progressBar.style.width = '0%';
                 showNextSlide();
-            }, 2000);
+            }, 2500);
             return;
         }
 
@@ -813,10 +450,16 @@
         }
 
         const totalDuration = slidesData.reduce((acc, s) => acc + s.duration, 0);
-        const elapsedDuration = slidesData.slice(0, currentSlideIndex + 1).reduce((acc, s) => acc + s.duration, 0);
+        const elapsedDuration = slidesData.slice(0, currentSlideIndex).reduce((acc, s) => acc + s.duration, 0) + slide.duration;
         
+        progressBar.style.transition = `width ${slide.duration / 1000}s linear`;
+        progressBar.style.width = `${(elapsedDuration / totalDuration) * 100}%`;
+        
+        // This part needs adjustment to start progress from previous state
+        const progressStart = (elapsedDuration - slide.duration) / totalDuration * 100;
+        progressBar.style.width = `${progressStart}%`;
         requestAnimationFrame(() => {
-             progressBar.style.width = `${(elapsedDuration / totalDuration) * 100}%`;
+            progressBar.style.width = `${elapsedDuration / totalDuration * 100}%`;
         });
         
         currentSlideIndex++;
@@ -824,8 +467,15 @@
         slideTimeout = setTimeout(showNextSlide, slide.duration);
     }
     
-    window.onload = () => showNextSlide();
+    window.onload = () => {
+        // Initial setup for progress bar
+        progressBar.style.transition = 'none';
+        progressBar.style.width = '0%';
+        // Start the show
+        setTimeout(showNextSlide, 50);
+    };
 </script>
 </body>
 </html>
+
 
