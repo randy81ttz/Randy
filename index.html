@@ -26,10 +26,9 @@
         .title-slide p { font-size: 1.2rem; font-weight: 700; color: var(--text-secondary); line-height: 1.4; }
         .definition-slide { padding: 2.5rem 1.5rem; }
         .definition-slide .icon { font-size: 3.5rem; margin-bottom: 1rem; }
-        .definition-slide h2 { font-size: 2.2rem; font-weight: 900; color: var(--pwc-orange); margin-bottom: 0.6rem; }
-        .definition-slide .sub-title { font-size: 0.9rem; font-weight: 700; color: var(--text-secondary); margin-bottom: 0.8rem; }
-        .definition-slide p { font-size: 1.1rem; font-weight: 700; color: var(--text-primary); line-height: 1.5; margin-bottom: 1.2rem; }
-        .definition-slide .formula { font-size: 0.95rem; font-weight: 400; color: var(--text-secondary); background-color: #ffffff; padding: 0.7rem 1rem; border-radius: 0.5rem; border: 1px solid var(--muji-light-grey); }
+        .definition-slide h2 { font-size: 2.5rem; font-weight: 900; color: var(--pwc-orange); margin-bottom: 0.8rem; }
+        .definition-slide p { font-size: 1.2rem; font-weight: 700; color: var(--text-primary); line-height: 1.5; margin-bottom: 1.5rem; }
+        .definition-slide .formula { font-size: 1rem; font-weight: 400; color: var(--text-secondary); background-color: #ffffff; padding: 0.75rem 1.2rem; border-radius: 0.5rem; border: 1px solid var(--muji-light-grey); }
         .footer { position: absolute; bottom: 1.5rem; width: 100%; text-align: center; font-size: 0.8rem; color: var(--text-secondary); font-weight: 700; }
     </style>
 </head>
@@ -48,28 +47,17 @@
             duration: 4500,
             content: {
                 title: `[1부]<br>세계를 움직이는<br><span class="highlight">'대장 돈'</span>은 누구?`,
-                subtitle: "미국 달러, 왜 세계가 따를까?"
-            }
-        },
-        {
-            type: 'definition',
-            duration: 5500,
-            content: {
-                icon: '👑',
-                title: '기축통화란?',
-                description: '<strong>Key Currency</strong><br>나라끼리 거래할 때 기준이 되는<br><strong>\'세계 공용 돈\'</strong>',
-                formula: '현재 대장: 미국 달러 (USD)'
+                subtitle: "기축통화 이야기, 그 시작"
             }
         },
         {
             type: 'definition',
             duration: 6000,
             content: {
-                icon: '🎓',
-                title: '왜 달러일까?',
-                subTitle: '기축통화 조건',
-                description: '<strong>① 막강한 경제 규모</strong><br><strong>② 깊고 안정적인 금융시장</strong><br><strong>③ 국제 신뢰</strong><br>이 모두를 갖춘 미국!',
-                formula: '쉽게 말해, 세상에서 가장 안전한 돈'
+                icon: '👑',
+                title: '기축통화란?',
+                description: '<strong>Key Currency.</strong><br>나라끼리 거래할 때 기준이 되는<br><strong>\'세계 공용 돈\'</strong>을 의미해요.',
+                formula: '현재 대장은? 미국 달러!'
             }
         },
         {
@@ -78,9 +66,8 @@
             content: {
                 icon: '📏',
                 title: '역할 1: 기준 자',
-                subTitle: '(Unit of Account, Numéraire)',
-                description: '모든 나라의 돈 가치를 재는<br>흔들리지 않는 \'기준 자\'<br><strong>"그래서 달러로는 얼마?"</strong>',
-                formula: '1달러 = 1,300원 이렇게!'
+                description: '모든 돈의 가치를 재는<br>흔들리지 않는 \'기준 자\' 역할.<br><strong>(Numéraire, 누메레르)</strong>',
+                formula: '"그래서 달러로는 얼마인데?"'
             }
         },
         {
@@ -88,54 +75,29 @@
             duration: 6500,
             content: {
                 icon: '🏛️',
-                title: '역할 2: 비상금 통장',
-                subTitle: '(Reserve Asset)',
-                description: '각 나라 중앙은행의<br>가장 안전한 외환보유고<br><strong>위기 상황의 구원투수!</strong>',
-                formula: '보통 60~70%를 달러로 보유'
+                title: '역할 2: 비상금',
+                description: '각 나라 중앙은행이<br>가장 많이 보유하는<br><strong>외환보유고. (Reserve Asset)</strong>',
+                formula: '안전하고 언제든 필요한 순간 사용!'
             }
         },
         {
             type: 'definition',
-            duration: 6000,
+            duration: 7000,
+            content: {
+                icon: '🤔',
+                title: '왜 100% 달러가 아닐까?',
+                description: '<strong>위험 분산!</strong><br>달러 가치도 변할 수 있으니,<br>유로·파운드·금 등으로 나눠 보유.<br><strong>계란을 한 바구니에만 담지 않는 것!</strong>',
+                formula: '보통 60~70% 정도만 달러'
+            }
+        },
+        {
+            type: 'definition',
+            duration: 6500,
             content: {
                 icon: '⛽️',
-                title: '역할 3: 세계 가격표',
-                subTitle: '(Invoice Currency)',
-                description: '석유, 금, 곡물, 반도체…<br>국제거래는 모두<br><strong>달러 가격표</strong>로 거래돼요',
-                formula: '세상의 모든 가격이 달러 기준'
-            }
-        },
-        {
-            type: 'definition',
-            duration: 7000,
-            content: {
-                icon: '🇰🇷',
-                title: '우리나라에 미치는 영향',
-                subTitle: '① 물가 올라갈 수 있어요',
-                description: '스타벅스 원두, 기름(원유)은<br>달러로 사와요.<br>달러 비싸지면 → 우리 물가 상승!',
-                formula: '환율 ↑ = 수입품 가격 ↑'
-            }
-        },
-        {
-            type: 'definition',
-            duration: 7000,
-            content: {
-                icon: '📈',
-                title: '우리나라에 미치는 영향',
-                subTitle: '② 미국 금리 시소 게임',
-                description: '미국 금리 ↑<br>→ 투자자들이 미국으로 몰려감<br>→ 한국 시장에서 자본 유출<br>→ 주식 시장 흔들림!',
-                formula: '미국 쪽 올라가면 한국 쪽 내려가요'
-            }
-        },
-        {
-            type: 'definition',
-            duration: 7000,
-            content: {
-                icon: '🚗',
-                title: '우리나라에 미치는 영향',
-                subTitle: '③ 수출 기업의 웃음과 눈물',
-                description: '삼성, 현대가 제품을 팔면<br>대금을 달러로 받아요.<br>달러 비싸지면 → 수익 증가!<br>달러 싸지면 → 수익 감소!',
-                formula: '환율이 수출 기업 수익성을 좌우'
+                title: '역할 3: 가격표',
+                description: '석유, 곡물, 금융 상품까지<br>국제거래는 모두 달러로 표시해요.<br><strong>(Invoice Currency)</strong>',
+                formula: '세계의 유일한 가격표'
             }
         },
         {
@@ -143,28 +105,18 @@
             duration: 6500,
             content: {
                 icon: '💡',
-                title: '결국 무엇이 중요한가?',
-                description: '<strong>미국 금리 ↑↓</strong><br><strong>달러 강약</strong><br>이 두 가지가<br>우리 물가, 주식, 일자리를<br>좌우한다는 뜻이에요!',
-                formula: '뉴스의 "환율, 금리" 소식이 남 일 아니군요'
+                title: '이게 왜 중요할까?',
+                description: '달러 강약이 우리나라 수출입,<br>금리, 환율에 직접 영향을 미쳐요.<br><strong>세계 경제의 중심!</strong>',
+                formula: '달러는 단순한 화폐가 아니라 권력'
             }
         },
         {
             type: 'definition',
             duration: 6000,
             content: {
-                icon: '🛡️',
-                title: '기업이 해야 할 것',
-                description: '<strong>① 환위험 관리 강화</strong><br>(파생상품 활용)<br><strong>② 美 거시지표 모니터링</strong><br><strong>③ 안정적 재무구조 유지</strong>',
-                formula: '기축통화 영향에서 벗어날 수 없으니까!'
-            }
-        },
-        {
-            type: 'definition',
-            duration: 5500,
-            content: {
                 icon: '➡️',
                 title: '다음 이야기',
-                description: '그렇다면<br>처음부터 달러가<br>대장이었을까요?',
+                description: '그렇다면 처음부터<br>달러가 대장이었을까요?',
                 formula: '2부: 달러는 어떻게 왕이 되었나?'
             }
         }
@@ -182,7 +134,7 @@
                 html = `<div class="slide-content title-slide"><h1>${slide.content.title}</h1><p>${slide.content.subtitle}</p></div>`;
                 break;
             case 'definition':
-                html = `<div class="slide-content definition-slide">${slide.content.icon ? `<div class="icon">${slide.content.icon}</div>` : ''}<h2>${slide.content.title}</h2>${slide.content.subTitle ? `<div class="sub-title">${slide.content.subTitle}</div>` : ''}<p>${slide.content.description}</p><div class="formula">${slide.content.formula}</div></div>`;
+                html = `<div class="slide-content definition-slide">${slide.content.icon ? `<div class="icon">${slide.content.icon}</div>` : ''}<h2>${slide.content.title}</h2><p>${slide.content.description}</p><div class="formula">${slide.content.formula}</div></div>`;
                 break;
         }
         return html;
