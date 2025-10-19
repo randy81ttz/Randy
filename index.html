@@ -3,33 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>[1편] 세계를 움직이는 '대장 돈'은 누구?</title>
+    <title>[1편] 세계 경제의 '대장 돈' 기축통화!</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --pwc-orange: #D04A02;
-            --muji-bg: #F8F7F4;
-            --muji-light-grey: #EAEAEA;
+            --brand-orange: #D04A02;
+            --brand-blue: #0250D0;
+            --bg-main: #F8F7F4;
+            --bg-light-grey: #EAEAEA;
             --text-primary: #2d2d2d;
             --text-secondary: #555555;
-            --blue: #0250D0;
         }
         body { font-family: 'Pretendard', sans-serif; background-color: #111; display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 1rem; }
-        .app-container { width: 100%; max-width: 400px; aspect-ratio: 9 / 16; background-color: var(--muji-bg); display: flex; flex-direction: column; overflow: hidden; border-radius: 2rem; box-shadow: 0 10px 40px rgba(0,0,0,0.3); position: relative; }
-        .progress-bar-container { width: 100%; height: 5px; background-color: var(--muji-light-grey); position: absolute; top: 0; left: 0; z-index: 10; }
-        .progress-bar { width: 0%; height: 100%; background-color: var(--pwc-orange); }
-        .slide-content { flex-grow: 1; padding: 3rem 2rem; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; opacity: 0; position: absolute; width: 100%; height: 100%; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+        .app-container { width: 100%; max-width: 400px; aspect-ratio: 9 / 16; background-color: var(--bg-main); display: flex; flex-direction: column; overflow: hidden; border-radius: 2rem; box-shadow: 0 10px 40px rgba(0,0,0,0.3); position: relative; }
+        .progress-bar-container { width: 100%; height: 5px; background-color: var(--bg-light-grey); position: absolute; top: 0; left: 0; z-index: 10; }
+        .progress-bar { width: 0%; height: 100%; background-color: var(--brand-orange); }
+        .slide-content { flex-grow: 1; padding: 2.5rem 1.5rem; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; opacity: 0; position: absolute; width: 100%; height: 100%; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
         .slide-content.active { opacity: 1; transform: translateY(0); }
         .title-slide h1 { font-size: 2.3rem; font-weight: 900; color: var(--text-primary); line-height: 1.2; margin-bottom: 1rem; }
-        .title-slide h1 .highlight { color: var(--pwc-orange); }
+        .title-slide h1 .highlight { color: var(--brand-orange); }
         .title-slide p { font-size: 1.2rem; font-weight: 700; color: var(--text-secondary); line-height: 1.4; }
-        .definition-slide { padding: 2.5rem 1.5rem; }
-        .definition-slide .icon { font-size: 3.5rem; margin-bottom: 1rem; }
-        .definition-slide h2 { font-size: 2.2rem; font-weight: 900; color: var(--pwc-orange); margin-bottom: 0.5rem; }
-        .definition-slide .term { font-size: 0.85rem; font-weight: 600; color: var(--blue); margin-bottom: 0.6rem; }
+        .definition-slide .icon { font-size: 3rem; margin-bottom: 1rem; }
+        .definition-slide h2 { font-size: 2.2rem; font-weight: 900; color: var(--brand-orange); margin-bottom: 0.5rem; }
+        .definition-slide .term { font-size: 0.8rem; letter-spacing: 0.5px; font-weight: 600; color: var(--brand-blue); margin-bottom: 1rem; }
         .definition-slide p { font-size: 1.05rem; font-weight: 700; color: var(--text-primary); line-height: 1.5; margin-bottom: 1rem; }
-        .definition-slide .analogy { font-size: 0.95rem; font-weight: 500; color: var(--text-secondary); background-color: #ffffff; padding: 0.7rem 1rem; border-radius: 0.5rem; border: 1px solid var(--muji-light-grey); }
+        .definition-slide .analogy { font-size: 0.95rem; font-weight: 500; color: var(--text-secondary); background-color: #ffffff; padding: 0.7rem 1rem; border-radius: 0.5rem; border: 1px solid var(--bg-light-grey); width: 100%; }
         .footer { position: absolute; bottom: 1.5rem; width: 100%; text-align: center; font-size: 0.8rem; color: var(--text-secondary); font-weight: 700; }
     </style>
 </head>
@@ -45,10 +44,10 @@
     const slidesData = [
         {
             type: 'title',
-            duration: 4500,
+            duration: 4000,
             content: {
-                title: `[1부]<br>세계를 움직이는<br><span class="highlight">'대장 돈'</span>은 누구?`,
-                subtitle: "기축통화에 대해 알아보기"
+                title: `[1부]<br>세계를 움직이는<br><span class="highlight">'대장 돈'</span>의 정체`,
+                subtitle: "기축통화, 1분 만에 개념 잡기"
             }
         },
         {
@@ -56,141 +55,93 @@
             duration: 5500,
             content: {
                 icon: '👑',
-                title: '기축통화란?',
-                term: 'Key Currency',
-                description: '국제 무역과 금융거래의<br><strong>기준이 되는 통화</strong>',
-                analogy: '마치 전 세계가 함께 쓰기로 약속한 "공용 돈"'
+                title: '기축통화(Key Currency)란?',
+                description: '국제 거래의 기준이 되는<br><strong>세계 공용 화폐</strong>',
+                analogy: '나라마다 언어가 다르지만<br>영어로 소통하는 것과 같아요'
             }
         },
         {
             type: 'definition',
             duration: 6000,
             content: {
-                icon: '🏆',
-                title: '왜 기축통화가 필요한가?',
-                term: '문제 해결',
-                description: '세상에 돈이 200개 넘게 있으니<br>복잡하고 거래하기 어려워요.<br><strong>그래서 하나로 통일하자!</strong>',
-                analogy: '반도체 규격, USB 표준처럼 세계가 통일한 "경제 표준"'
+                icon: '🤔',
+                title: '왜 필요할까?',
+                description: '200개가 넘는 돈을<br>서로 바꾸려면 너무 복잡하니까!<br><strong>하나의 기준으로 통일</strong>하는 거예요.',
+                analogy: '전 세계 모든 충전기를<br>USB-C 타입으로 통일하는 것처럼!'
             }
         },
         {
             type: 'definition',
-            duration: 6000,
+            duration: 6500,
             content: {
                 icon: '💪',
-                title: '기축통화 되는 조건',
-                term: '필수 요건 3가지',
-                description: '<strong>① 막강한 경제 규모</strong><br><strong>② 깊고 안정적인 금융시장</strong><br><strong>③ 국제적 신뢰</strong>',
-                analogy: '반장이 되려면 똑똑하고 책임감 있고 친구들이 믿어야 하듯이'
+                title: '아무나 대장이 될 순 없죠',
+                term: '기축통화의 3가지 조건',
+                description: '<strong>① 압도적인 경제력</strong><br>세계에서 가장 큰 경제 규모<br><br><strong>② 안정적인 금융 시스템</strong><br>깊고 유동성 풍부한 시장<br><br><strong>③ 전 세계적인 신뢰</strong><br>통화 가치에 대한 확고한 신용',
+                analogy: ''
             }
         },
         {
             type: 'definition',
-            duration: 6000,
+            duration: 5000,
             content: {
-                icon: '🏅',
-                title: '현재 기축통화의 왕',
-                term: 'Reserve Currency',
-                description: '이 조건을 모두 갖춘<br><strong>미국 달러 (USD)</strong>',
-                analogy: '세계 경제의 왕좌에 앉아있는 달러'
+                icon: '🥇',
+                title: '현재 세계의 대장은?',
+                description: '이 모든 조건을 만족하는<br><strong>미국 달러(USD)</strong>',
+                analogy: '세계 경제의 왕좌는 달러!'
             }
         },
         {
             type: 'definition',
-            duration: 6500,
+            duration: 7000,
             content: {
                 icon: '📏',
-                title: '역할 1: 가치 척도',
-                term: 'Unit of Account (Numéraire)',
-                description: '모든 나라의 돈 가치를<br>재는 <strong>기준점</strong>',
-                analogy: '미터처럼 거리를 재듯이, 달러로 모든 돈의 값을 재요'
+                title: '역할 1: 가치의 기준',
+                term: 'Unit of Account',
+                description: '모든 상품과 통화의 가치를<br><strong>달러로 환산해서 비교해요.</strong>',
+                analogy: 'ex) "이 원유, 달러로 얼마예요?"<br>모든 가격표의 기준이 됩니다.'
             }
         },
         {
             type: 'definition',
-            duration: 6000,
-            content: {
-                icon: '💬',
-                title: '가치 척도의 예',
-                term: '실제 사용',
-                description: '나라끼리 말할 때:<br><strong>"그래서 달러로는 얼마?"</strong><br>이것이 최종 기준!',
-                analogy: '한국 원, 일본 엔, 인도 루피… 모두를 달러로 환산해야 비교할 수 있어요'
-            }
-        },
-        {
-            type: 'definition',
-            duration: 6500,
+            duration: 7000,
             content: {
                 icon: '🔄',
-                title: '역할 2: 거래 매개',
+                title: '역할 2: 거래의 수단',
                 term: 'Medium of Exchange',
-                description: '<strong>거래할 때 중간에서</strong><br>복잡함을 줄여주는 역할',
-                analogy: '셋이 물건을 바꿀 때 모두와 거래하지 말고 한 사람(달러)을 통해서만 거래하는 것처럼'
+                description: '나라끼리 거래할 때<br><strong>중간에서 달러로 계산</strong>해요.',
+                analogy: 'ex) 한국이 브라질에서 커피를 살 때<br>원화나 헤알화가 아닌, 달러로 결제!'
             }
         },
         {
             type: 'definition',
-            duration: 6500,
+            duration: 7000,
             content: {
-                icon: '💡',
-                title: '거래 매개의 예',
-                term: '실제 원리',
-                description: 'A나라와 B나라가 거래할 때:<br>A가 받은 B의 화폐를<br><strong>달러로 바꿔서 보관</strong>',
-                analogy: '중개인처럼, 달러가 모든 거래를 쉽게 만들어줘요'
-            }
-        },
-        {
-            type: 'definition',
-            duration: 6500,
-            content: {
-                icon: '🏦',
-                title: '역할 3: 가치 저장',
+                icon: '🏛️',
+                title: '역할 3: 안전한 금고',
                 term: 'Store of Value',
-                description: '각 나라 중앙은행이<br><strong>가장 안전한 자산</strong>으로<br>비축해두는 돈',
-                analogy: '우리가 비상금을 은행에 맡기듯, 나라들도 달러를 "가장 안전한 비상금"으로 생각해요'
+                description: '각국 중앙은행은 비상금을<br><strong>가장 안전한 달러로 보관</strong>해요.',
+                analogy: '이를 \'외환보유고\'라고 부르며,<br>대부분(약 60%)이 달러 자산입니다.'
             }
         },
         {
             type: 'definition',
-            duration: 6500,
+            duration: 5000,
             content: {
-                icon: '📊',
-                title: '가치 저장의 예',
-                term: '외환보유고 구성',
-                description: '나라의 외환보유고:<br><strong>달러 60~70%</strong><br>나머지는 유로, 파운드, 금 등',
-                analogy: '노후자금을 주식, 부동산, 현금으로 나눠 담는 것처럼 위험을 분산해요'
+                icon: '✨',
+                title: '핵심 요약',
+                description: '기축통화(달러)는<br>전 세계 경제 활동의<br><strong>기본 규칙이자 인프라!</strong>',
+                analogy: '이 구조는 쉽게 바뀌기 어려워요'
             }
         },
         {
             type: 'definition',
-            duration: 6500,
-            content: {
-                icon: '⛽️',
-                title: '역할 4: 국제 가격표',
-                term: 'Invoice Currency',
-                description: '석유, 금, 곡물 등<br>국제 거래 상품의<br><strong>가격이 달러로 표시</strong>',
-                analogy: '백화점에서 모든 상품에 가격표를 붙이듯, 세계 시장에선 달러로만 가격을 붙여요'
-            }
-        },
-        {
-            type: 'definition',
-            duration: 6000,
-            content: {
-                icon: '🌍',
-                title: '기축통화의 지위',
-                term: '현실과 특징',
-                description: '<strong>달러 패권은</strong><br>단기간에 바뀌기 어려운<br><strong>구조적 현실</strong>',
-                analogy: '한 번 왕이 된 나라가 왕좌를 내려놓기는 정말 어려워요'
-            }
-        },
-        {
-            type: 'definition',
-            duration: 5500,
+            duration: 5000,
             content: {
                 icon: '➡️',
                 title: '다음 이야기',
-                description: '그렇다면<br>처음부터 달러가<br>대장이었을까요?',
-                analogy: '2부: 달러는 어떻게 왕이 되었나?'
+                description: '그렇다면<br>달러는 어떻게<br>대장이 되었을까요?',
+                analogy: '2부: 달러, 왕좌에 오르다'
             }
         }
     ];
@@ -207,7 +158,13 @@
                 html = `<div class="slide-content title-slide"><h1>${slide.content.title}</h1><p>${slide.content.subtitle}</p></div>`;
                 break;
             case 'definition':
-                html = `<div class="slide-content definition-slide">${slide.content.icon ? `<div class="icon">${slide.content.icon}</div>` : ''}<h2>${slide.content.title}</h2>${slide.content.term ? `<div class="term">${slide.content.term}</div>` : ''}<p>${slide.content.description}</p><div class="analogy">${slide.content.analogy}</div></div>`;
+                html = `<div class="slide-content definition-slide">
+                    ${slide.content.icon ? `<div class="icon">${slide.content.icon}</div>` : ''}
+                    <h2>${slide.content.title}</h2>
+                    ${slide.content.term ? `<div class="term">${slide.content.term}</div>` : ''}
+                    <p>${slide.content.description}</p>
+                    ${slide.content.analogy ? `<div class="analogy">${slide.content.analogy}</div>` : ''}
+                </div>`;
                 break;
         }
         return html;
@@ -215,6 +172,7 @@
 
     function showNextSlide() {
         if (currentSlideIndex >= slidesData.length) {
+            // Loop back to the beginning after a pause
             setTimeout(() => {
                 currentSlideIndex = 0;
                 progressBar.style.transition = 'none';
@@ -225,16 +183,20 @@
         }
 
         const slide = slidesData[currentSlideIndex];
-        const totalDuration = slidesData.reduce((acc, s) => acc + s.duration, 0);
-        const elapsedDuration = slidesData.slice(0, currentSlideIndex).reduce((acc, s) => acc + s.duration, 0);
-
+        
         slideContainer.innerHTML = renderSlide(slide);
         
         const activeSlide = slideContainer.querySelector('.slide-content');
         if (activeSlide) {
+            // Short delay to allow DOM update before adding class for transition
             setTimeout(() => activeSlide.classList.add('active'), 50);
         }
+        
+        // Calculate total duration for progress bar
+        const totalDuration = slidesData.reduce((acc, s) => acc + s.duration, 0);
+        const elapsedDuration = slidesData.slice(0, currentSlideIndex).reduce((acc, s) => acc + s.duration, 0);
 
+        // Animate progress bar
         requestAnimationFrame(() => {
             progressBar.style.transition = `width ${slide.duration / 1000}s linear`;
             progressBar.style.width = `${(elapsedDuration + slide.duration) / totalDuration * 100}%`;
