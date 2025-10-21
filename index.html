@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>[1편] 세계를 움직이는 '대장 돈'은 누구?</title>
+    <title>[2부] 달러, 왕좌에 오르다 (최종결정본)</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
             --pwc-orange: #D04A02;
@@ -13,6 +13,7 @@
             --muji-light-grey: #EAEAEA;
             --text-primary: #2d2d2d;
             --text-secondary: #555555;
+            --blue: #0250D0;
         }
         body { font-family: 'Pretendard', sans-serif; background-color: #111; display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 1rem; }
         .app-container { width: 100%; max-width: 400px; aspect-ratio: 9 / 16; background-color: var(--muji-bg); display: flex; flex-direction: column; overflow: hidden; border-radius: 2rem; box-shadow: 0 10px 40px rgba(0,0,0,0.3); position: relative; }
@@ -45,90 +46,78 @@
             type: 'title',
             duration: 4500,
             content: {
-                // --- 1. 메인 제목 수정 ---
-                title: `[1편]<br>세계를 움직이는<br>'<span class="highlight">대장 돈</span>'은 누구?`,
-                subtitle: "기축통화 1분 개념"
-            }
-        },
-        {
-            type: 'definition',
-            duration: 6500,
-            content: {
-                icon: '👑',
-                title: '기축통화<br>(Key Currency)',
-                description: '국제 거래에서<br><strong>기준</strong>으로 사용되는 통화',
-                analogy: '비유: 전 세계 공용어 \'영어\'<br>나라마다 돈이 다르지만, 국제 거래는 주로 달러로 소통해요.'
-            }
-        },
-        {
-            type: 'definition',
-            duration: 6000,
-            content: {
-                icon: '🤔',
-                title: '왜 필요할까?',
-                description: '<strong>환전 비용과 환위험</strong>을 줄여<br><strong>거래를 효율적</strong>으로 만들기 위해!',
-                analogy: '비유: 어떤 나라와 거래하든<br>\'달러\'라는 하나의 통화로 통일<br>→ 매번 환전할 필요 없고, 손실 위험도 줄어요!'
+                title: `[2부]<br>돈의 왕좌 게임<br><span class="highlight">달러는 어떻게<br>왕이 되었나?</span>`,
+                subtitle: "기축통화의 역사"
             }
         },
         {
             type: 'definition',
             duration: 7000,
             content: {
-                icon: '💪',
-                title: '기축통화의 조건',
-                description: '① 압도적인 경제력<br>② 크고 안정적인 금융시장<br>③ 국제적 신뢰',
-                analogy: '비유: 세계 최고 신용도의 은행<br>자산(경제력)이 가장 많고, 거래 시스템(금융시장)이 안정적이며, 절대 망하지 않을 거라는 믿음(신뢰)이 있어야 하죠.'
-            }
-        },
-        {
-            type: 'definition',
-            duration: 6000,
-            content: {
-                icon: '📏',
-                title: '기능 1: 가치 척도',
-                description: '모든 상품과 서비스의 가치를<br><strong>달러를 기준으로 측정</strong>하고 비교',
-                analogy: '비유: 전 세계 공용 \'자\'<br>ex) 국제 유가: "배럴당 80달러"'
-            }
-        },
-        {
-            type: 'definition',
-            duration: 7000,
-            content: {
-                icon: '🔄',
-                title: '기능 2: 거래의 매개',
-                description: '여러 나라와 거래할 때<br><strong>같은 달러로 연쇄 거래 가능</strong><br>환전 비용 없음!',
-                analogy: '예시: ① 한국이 베트남에 팔고 달러 수취<br>② 그 달러를 환전 없이 브라질에 지급<br>③ 모두가 달러를 쓰니까 환전이 거의 필요 없어요!'
+                icon: '🇬🇧👑',
+                title: '과거의 왕: 파운드',
+                description: '19세기 최강대국 영국의 돈,<br><strong>파운드</strong>가 기축통화였어요.',
+                analogy: '힘의 원천: 금본위제<br>"파운드를 가져오면 언제든 금으로 바꿔준다!"<br>이 약속이 신뢰의 핵심이었죠.'
             }
         },
         {
             type: 'definition',
             duration: 8000,
             content: {
-                icon: '🏛️', 
-                title: '기능 3: 준비자산<br>(비상금)',
-                description: '각국 중앙은행은 위기 시를 대비해<br>달러를 안전자산으로 보관해요.',
-                analogy: '비유: 국가의 \'외화 비상금 통장\'<br>ex) 외환위기 시, 기업들이 달러가 부족하면<br>중앙은행이 보관하던 달러를 공급해<br>국제 거래를 지원합니다.'
+                icon: '⚔️',
+                title: '전쟁과 부의 이동',
+                description: '두 번의 세계대전을 거치며<br><strong>영국:</strong> 전쟁 비용으로 금 보유량 급감<br><strong>미국:</strong> 전쟁 물자를 팔아 막대한 금 축적',
+                analogy: '세계의 부가 영국에서 미국으로<br>이동하는 결정적 계기가 됩니다.'
             }
         },
         {
             type: 'definition',
-            duration: 8500,
+            duration: 7000,
             content: {
-                icon: '💡',
-                title: '기축 vs 준비통화',
-                description: '<strong>기축통화</strong>는 국제 거래의 기준이 되는<br><strong>단 하나의 통화(현재 달러)</strong>를,<br><strong>준비통화</strong>는 각국이 비상금으로 쌓아두는<br><strong>여러 통화(달러, 유로, 엔 등)</strong>를 말해요.',
-                analogy: '기축통화(달러)는 항상 준비통화이지만,<br>모든 준비통화가 기축통화인 것은 아니에요.'
+                icon: '🇺🇸✨',
+                title: '새로운 강자의 등장',
+                description: '전쟁이 끝날 무렵,<br><strong>전 세계 금의 2/3 이상이<br>미국으로!</strong>',
+                analogy: '미국은 누구도 넘볼 수 없는<br>경제 대국이 되었어요.'
             }
         },
         {
             type: 'definition',
-            duration: 4000,
+            duration: 8000,
             content: {
-                 // --- 2. 다음 편 예고 수정 ---
+                icon: '📜',
+                title: '브레튼 우즈 체제 (1944)',
+                description: '44개국 대표가 모여<br>전후 세계 경제 질서를 논의했어요.<br>미국이 제안합니다:<br><strong>"달러를 금과 연결하겠다!"</strong>',
+                analogy: '핵심 약속: "$35 = 금 1온스"<br>각국은 달러를 금처럼 믿게 되었죠.'
+            }
+        },
+        {
+            type: 'definition',
+            duration: 7500,
+            content: {
+                icon: '🔗',
+                title: '금환본위제',
+                description: '미국의 금을 믿고<br>전 세계가 달러를 쓰는 시스템,<br>이것이 <strong>금환본위제</strong>예요.',
+                analogy: '핵심 구조: 달러 ↔ 금 (고정)<br>각국 통화 ↔ 달러 (고정환율제)'
+            }
+        },
+        {
+            type: 'definition',
+            duration: 7000,
+            content: {
+                icon: '👑',
+                title: '달러, 왕좌에 오르다',
+                description: '이렇게 달러는 금을 등에 업고<br>파운드를 밀어낸 뒤,<br><strong>새로운 기축통화</strong>가 되었습니다.',
+                analogy: '(다른 나라 돈) ↔ (달러) ↔ (금)<br>튼튼한 연결고리가 완성되었어요.'
+            }
+        },
+        {
+            type: 'definition',
+            duration: 5000,
+            content: {
                 icon: '➡️',
-                title: '다음 편 예고',
-                description: '[2편]<br>달러는 어떻게 왕이 되었나?',
-                analogy: '2부에서 이어집니다.'
+                title: '다음 이야기',
+                description: '금과 맺었던 굳건한 약속.<br>하지만 그 약속이 깨진다면?',
+                analogy: '3부: 달러의 배신, 그리고 부활'
             }
         }
     ];
@@ -191,5 +180,6 @@
     window.onload = () => {
         showNextSlide();
     };
-</script></body>
+</script>
+</body>
 </html>
