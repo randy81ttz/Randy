@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>[4부] 달러의 압도적인 슈퍼파워 (최종본)</title>
+    <title>[5부] 기축통화의 미래와 우리의 삶 (최종 완성본)</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
@@ -28,7 +28,9 @@
         .definition-slide .icon { font-size: 3rem; margin-bottom: 1rem; }
         .definition-slide h2 { font-size: 2.2rem; font-weight: 900; color: var(--pwc-orange); margin-bottom: 0.8rem; }
         .definition-slide p { font-size: 1.1rem; font-weight: 700; color: var(--text-primary); line-height: 1.5; margin-bottom: 1.2rem; }
+        .definition-slide p strong { font-weight: 900; color: var(--pwc-orange); }
         .definition-slide .analogy { font-size: 0.95rem; font-weight: 500; color: var(--text-secondary); background-color: #ffffff; padding: 0.8rem 1rem; border-radius: 0.5rem; border: 1px solid var(--muji-light-grey); width:100%;}
+        .definition-slide .analogy strong { font-weight: 700; color: var(--text-primary); }
         .footer { position: absolute; bottom: 1.5rem; width: 100%; text-align: center; font-size: 0.8rem; color: var(--text-secondary); font-weight: 700; }
     </style>
 </head>
@@ -44,80 +46,80 @@
     const slidesData = [
         {
             type: 'title',
-            duration: 4500,
+            duration: 5000,
             content: {
-                title: `[4부]<br>달러의 압도적인<br><span class="highlight">슈퍼파워</span>`,
-                subtitle: "기축통화국의 '과도한 특권'"
+                title: `[5부]<br>기축통화의 미래와<br><span class="highlight">우리의 삶</span>`,
+                subtitle: "시리즈의 마지막 이야기"
             }
         },
         {
             type: 'definition',
-            duration: 8500,
+            duration: 7000,
             content: {
-                icon: '💸',
-                title: '슈퍼파워 1: 시뇨리지',
-                description: '<strong>\'화폐주조차익\'</strong><br>종이와 잉크 값만으로<br>전 세계의 실물 자산을<br>사올 수 있는 힘이에요.',
-                analogy: '비유: 종이를 보물로 바꾸는 마법<br>미국은 달러를 찍어내고,<br>전 세계는 그 달러를 받고 물건을 팔죠.'
+                icon: '🏰',
+                title: '달러 왕국, 영원할까?',
+                description: '달러는 여전히 강력합니다!<br>가장 큰 금융시장(금고)과<br>모두가 쓰는 시스템(네트워크 효과) 덕분이죠.',
+                analogy: '하지만 영원한 왕은 없듯이,<br>달러의 아성에 도전하는 움직임도 있어요.'
+            }
+        },
+        {
+            type: 'definition',
+            duration: 9500,
+            content: {
+                icon: '🇪🇺🇯🇵🇬🇧🇨🇳',
+                title: '도전자들: 유로부터 위안까지',
+                description: '<strong>🇪🇺 유로: 준비통화 2위(20%)</strong><br>→ 강점: 경제 규모 | 약점: 재정 통합 부족<br><br><strong>🇯🇵 엔/🇬🇧 파운드: 과거 영광</strong><br>→ 현재는 지역 통화 역할<br><br><strong>🇨🇳 위안화: 야심찬 도전자</strong><br>→ 일대일로로 영향력 확대 중',
+                analogy: '각자의 강점과 약점이 뚜렷합니다.'
+            }
+        },
+        {
+            type: 'definition',
+            duration: 9000,
+            content: {
+                icon: '🧱',
+                title: '모든 도전자들의 공통 약점',
+                description: '<strong>① 네트워크 효과</strong><br>→ 이미 모두가 달러 시스템 사용 중<br><br><strong>② 금융시장 깊이</strong><br>→ 미국만큼 크고 깊은 시장 없음<br><br><strong>③ 신뢰와 안정성</strong><br>→ 달러의 오랜 역사와 신뢰 따라잡기 어려움',
+                analogy: '특히 위안화는 자본 통제가 큰 장애물!'
             }
         },
         {
             type: 'definition',
             duration: 8000,
             content: {
-                icon: '💬',
-                title: '슈퍼파워 2: 금융망 통제',
-                description: '전 세계 은행은 <strong>SWIFT</strong>라는<br>국제 송금망을 통해 돈을 보내요.',
-                analogy: '비유: 은행들의 단톡방<br>이 방에서 주고받는 메시지의 대부분이<br>달러 거래이기 때문에,<br>미국의 영향력이 막강해요.'
+                icon: '🤔',
+                title: '미래 전망은?',
+                description: '<strong>전문가들의 전망:</strong><br>단기(~10년): 달러 우위 지속<br>장기(10년~): 점진적 다극화 가능',
+                analogy: '<strong>\'다극화\'란?</strong><br>→ 달러 독주에서<br>여러 통화가 영향력을 나눠 갖는 구조<br><br>달러가 완전히 대체되긴 어렵지만,<br>영향력은 조금씩 줄어들 수 있어요.'
+            }
+        },
+        {
+            type: 'definition',
+            duration: 8000,
+            content: {
+                icon: '📱☕️',
+                title: '이 모든 게, 나와 무슨 상관?',
+                description: '이 거대한 돈의 흐름은<br><strong>우리 지갑과 직결</strong>되어 있어요.<br><strong>환율(달러 가치)</strong>이 오르면<br>수입 물가가 올라요.',
+                analogy: 'ex) 아이폰, 커피, 기름 값이<br>전부 비싸집니다.'
             }
         },
         {
             type: 'definition',
             duration: 9000,
             content: {
-                icon: '🇺🇸🏦',
-                title: '슈퍼파워 2: 최종 승인권',
-                description: '모든 달러 거래는 최종적으로<br><strong>미국 내 결제 시스템</strong>을 거쳐야<br>완료돼요.',
-                analogy: '비유: 단톡방 방장의 권한<br>미국은 적대국이나 제재 대상국을<br>이 시스템에서 차단할 수 있어요.<br>(금융 제재의 핵심)'
+                icon: '🏠📈',
+                title: '우리의 삶과 직결!',
+                description: '<strong>미국 금리 인상 시:</strong><br>① 전 세계 돈이 미국으로 이동<br>② 한국에서 자본 유출<br>③ 한국 금리도 따라 상승 압박<br>④ 내 대출 이자, 주식, 부동산에 영향!',
+                analogy: '<strong>이것이 기축통화의 힘!</strong><br>미국 Fed → 전 세계 경제 좌우'
             }
         },
         {
             type: 'definition',
-            duration: 9000,
+            duration: 8000,
             content: {
-                icon: '🛡️',
-                title: '슈퍼파워 3: 외환위기 면역',
-                description: '보통 나라: 달러 빚 → 외환위기 위험<br><strong>미국: 모든 빚을 달러로 짐</strong><br>외환위기 원천 차단!',
-                analogy: '비유: 빚을 원화로 갚는 상황<br>최악의 경우? 연준(Fed)이<br>달러를 찍어서 갚으면 됩니다!'
-            }
-        },
-        {
-            type: 'definition',
-            duration: 6000,
-            content: {
-                icon: '🎯',
-                title: '실제 사례: 러시아',
-                description: '2022년, 미국은 러시아를<br>SWIFT에서 차단했어요.<br>러시아 경제에 큰 타격!',
-                analogy: '이것이 달러의 무기화<br>(Weaponization of Dollar)'
-            }
-        },
-        {
-            type: 'definition',
-            duration: 6000,
-            content: {
-                icon: '👑',
-                title: '이것이 \'과도한 특권\'',
-                description: '프랑스는 이를<br><strong>\'과도한 특권\'</strong>이라 비난했어요.<br>미국은 이 슈퍼파워로<br>전 세계 경제를 좌우합니다.',
-                analogy: '달러의 힘은 단순한 돈을 넘어선 권력입니다.'
-            }
-        },
-        {
-            type: 'definition',
-            duration: 4500,
-            content: {
-                icon: '➡️',
-                title: '다음 이야기',
-                description: '그렇다면 이 달러 패권은<br>영원할까요?<br>새로운 도전자들은 없을까요?',
-                analogy: '5부: 기축통화의 미래와 우리의 삶'
+                icon: '💡',
+                title: '시리즈를 마치며',
+                description: '<strong>기축통화 시리즈 완결!</strong><br><br>1부: 기축통화가 뭔지<br>2부: 달러가 왕이 된 과정<br>3부: 닉슨 쇼크와 석유 동맹<br>4부: 달러의 슈퍼파워<br>5부: 미래와 우리 삶',
+                analogy: '이제 뉴스 속 \'달러\'가<br>다르게 보이시나요?<br><br>시청해주셔서 감사합니다! 🙏'
             }
         }
     ];
