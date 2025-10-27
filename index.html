@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>[5부] 기축통화의 미래와 우리의 삶 (최종 완성본)</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>엔화 약세 - 달러 강세</title>
     <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -13,175 +12,187 @@
             --muji-light-grey: #EAEAEA;
             --text-primary: #2d2d2d;
             --text-secondary: #555555;
-            --blue: #0250D0;
         }
-        body { font-family: 'Pretendard', sans-serif; background-color: #111; display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 1rem; }
-        .app-container { width: 100%; max-width: 400px; aspect-ratio: 9 / 16; background-color: var(--muji-bg); display: flex; flex-direction: column; overflow: hidden; border-radius: 2rem; box-shadow: 0 10px 40px rgba(0,0,0,0.3); position: relative; }
-        .progress-bar-container { width: 100%; height: 5px; background-color: var(--muji-light-grey); position: absolute; top: 0; left: 0; z-index: 10; }
-        .progress-bar { width: 0%; height: 100%; background-color: var(--pwc-orange); }
-        .slide-content { flex-grow: 1; padding: 2.5rem 1.5rem; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; opacity: 0; position: absolute; width: 100%; height: 100%; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
-        .slide-content.active { opacity: 1; transform: translateY(0); }
-        .title-slide h1 { font-size: 2.3rem; font-weight: 900; color: var(--text-primary); line-height: 1.2; margin-bottom: 1rem; }
-        .title-slide h1 .highlight { color: var(--pwc-orange); }
-        .title-slide p { font-size: 1.2rem; font-weight: 700; color: var(--text-secondary); line-height: 1.4; }
-        .definition-slide { padding: 2.5rem 1.5rem; }
-        .definition-slide .icon { font-size: 3rem; margin-bottom: 1rem; }
-        .definition-slide h2 { font-size: 2.2rem; font-weight: 900; color: var(--pwc-orange); margin-bottom: 0.8rem; }
-        .definition-slide p { font-size: 1.1rem; font-weight: 700; color: var(--text-primary); line-height: 1.5; margin-bottom: 1.2rem; }
-        .definition-slide p strong { font-weight: 900; color: var(--pwc-orange); }
-        .definition-slide .analogy { font-size: 0.95rem; font-weight: 500; color: var(--text-secondary); background-color: #ffffff; padding: 0.8rem 1rem; border-radius: 0.5rem; border: 1px solid var(--muji-light-grey); width:100%;}
-        .definition-slide .analogy strong { font-weight: 700; color: var(--text-primary); }
-        .footer { position: absolute; bottom: 1.5rem; width: 100%; text-align: center; font-size: 0.8rem; color: var(--text-secondary); font-weight: 700; }
+        body {
+            font-family: 'Pretendard', sans-serif;
+            background-color: #111;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 1rem;
+            margin: 0;
+        }
+        .container {
+            width: 100%;
+            max-width: 400px;
+            aspect-ratio: 9 / 16;
+            background-color: var(--muji-bg);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-radius: 2rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden;
+            padding: 2rem;
+        }
+        .title {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        .subtitle {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--pwc-orange);
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+        .coins-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+            margin: 2rem 0;
+            position: relative;
+        }
+        .coin {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+        .coin-circle {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+            font-weight: 900;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            animation: pulse 2s ease-in-out infinite;
+        }
+        .yen-coin .coin-circle {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+            color: white;
+            animation: shrink 3s ease-in-out infinite;
+        }
+        .dollar-coin .coin-circle {
+            background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+            color: white;
+            animation: grow 3s ease-in-out infinite;
+        }
+        @keyframes shrink {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(0.75);
+            }
+        }
+        @keyframes grow {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.25);
+            }
+        }
+        .coin-label {
+            font-size: 1.2rem;
+            font-weight: 900;
+            text-align: center;
+        }
+        .yen-coin .coin-label {
+            color: #ff6b6b;
+        }
+        .dollar-coin .coin-label {
+            color: #4CAF50;
+        }
+        .arrow {
+            font-size: 2.5rem;
+            font-weight: 900;
+            animation: bounce 1.5s ease-in-out infinite;
+        }
+        .yen-coin .arrow {
+            color: #ff6b6b;
+        }
+        .dollar-coin .arrow {
+            color: #4CAF50;
+        }
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        .exchange-rate {
+            margin-top: 3rem;
+            text-align: center;
+        }
+        .rate-box {
+            background-color: white;
+            padding: 1.2rem 2rem;
+            border-radius: 1rem;
+            border: 2px solid var(--muji-light-grey);
+            display: inline-block;
+        }
+        .rate-label {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+        .rate-value {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--pwc-orange);
+        }
+        .footer {
+            position: absolute;
+            bottom: 1.5rem;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            font-weight: 700;
+        }
     </style>
 </head>
 <body>
-    <div class="app-container">
-        <div class="progress-bar-container">
-            <div id="progress-bar" class="progress-bar"></div>
+    <div class="container">
+        <div class="title">엔화 약세 심화</div>
+        <div class="subtitle">달러 대비 엔화 가치 급락</div>
+        
+        <div class="coins-container">
+            <div class="coin yen-coin">
+                <div class="coin-circle">¥</div>
+                <div class="arrow">↓</div>
+                <div class="coin-label">엔화<br>약세</div>
+            </div>
+            
+            <div class="coin dollar-coin">
+                <div class="coin-circle">$</div>
+                <div class="arrow">↑</div>
+                <div class="coin-label">달러<br>강세</div>
+            </div>
         </div>
-        <div id="slide-container"></div>
+        
+        <div class="exchange-rate">
+            <div class="rate-box">
+                <div class="rate-label">환율</div>
+                <div class="rate-value">152¥/$</div>
+            </div>
+        </div>
+        
         <div class="footer">야금일기</div>
     </div>
-<script>
-    const slidesData = [
-        {
-            type: 'title',
-            duration: 5000,
-            content: {
-                title: `[5부]<br>기축통화의 미래와<br><span class="highlight">우리의 삶</span>`,
-                subtitle: "시리즈의 마지막 이야기"
-            }
-        },
-        {
-            type: 'definition',
-            duration: 7000,
-            content: {
-                icon: '🏰',
-                title: '달러 왕국, 영원할까?',
-                description: '달러는 여전히 강력합니다!<br>가장 큰 금융시장(금고)과<br>모두가 쓰는 시스템(네트워크 효과) 덕분이죠.',
-                analogy: '하지만 영원한 왕은 없듯이,<br>달러의 아성에 도전하는 움직임도 있어요.'
-            }
-        },
-        {
-            type: 'definition',
-            duration: 9500,
-            content: {
-                icon: '🇪🇺.🇯🇵.🇬🇧.🇨🇳',
-                title: '도전자들:<br>유로부터 위안까지',
-                description: '<strong>🇪🇺 유로: 준비통화 2위(20%)</strong><br>→ 강점: 경제 규모 | 약점: 재정 통합 부족<br><br><strong>🇯🇵 엔/🇬🇧 파운드: 과거 영광</strong><br>→ 현재는 지역 통화 역할<br><br><strong>🇨🇳 위안화: 야심찬 도전자</strong><br>→ 일대일로로 영향력 확대 중',
-                analogy: '각자의 강점과 약점이 뚜렷합니다.'
-            }
-        },
-        {
-            type: 'definition',
-            duration: 9000,
-            content: {
-                icon: '🧱',
-                title: '모든 도전자들의 공통 약점',
-                description: '<strong>① 네트워크 효과</strong><br>→ 이미 모두가 달러 시스템 사용 중<br><br><strong>② 금융시장 깊이</strong><br>→ 미국만큼 크고 깊은 시장 없음<br><br><strong>③ 신뢰와 안정성</strong><br>→ 달러의 오랜 역사와 신뢰 따라잡기 어려움',
-                analogy: '특히 위안화는 자본 통제가 큰 장애물!'
-            }
-        },
-        {
-            type: 'definition',
-            duration: 8000,
-            content: {
-                icon: '🤔',
-                title: '미래 전망은?',
-                description: '<strong>전문가들의 전망:</strong><br>단기(~10년): 달러 우위 지속<br>장기(10년~): 점진적 다극화 가능',
-                analogy: '<strong>\'다극화\'란?</strong><br>→ 달러 독주에서<br>여러 통화가 영향력을 나눠 갖는 구조<br><br>달러가 완전히 대체되긴 어렵지만,<br>영향력은 조금씩 줄어들 수 있어요.'
-            }
-        },
-        {
-            type: 'definition',
-            duration: 8000,
-            content: {
-                icon: '📱☕️',
-                title: '이 모든 게, 나와 무슨 상관?',
-                description: '이 거대한 돈의 흐름은<br><strong>우리 지갑과 직결</strong>되어 있어요.<br><strong>환율(달러 가치)</strong>이 오르면<br>수입 물가가 올라요.',
-                analogy: 'ex) 아이폰, 커피, 기름 값이<br>전부 비싸집니다.'
-            }
-        },
-        {
-            type: 'definition',
-            duration: 9000,
-            content: {
-                icon: '🏠📈',
-                title: '우리의 삶과 직결!',
-                description: '<strong>미국 금리 인상 시:</strong><br>① 전 세계 돈이 미국으로 이동<br>② 한국에서 자본 유출<br>③ 한국 금리도 따라 상승 압박<br>④ 내 대출 이자, 주식, 부동산에 영향!',
-                analogy: '<strong>이것이 기축통화의 힘!</strong><br>미국 Fed → 전 세계 경제 좌우'
-            }
-        },
-        {
-            type: 'definition',
-            duration: 8000,
-            content: {
-                icon: '💡',
-                title: '시리즈를 마치며',
-                description: '<strong>기축통화 시리즈 완결!</strong><br><br>1부: 기축통화가 뭔지<br>2부: 달러가 왕이 된 과정<br>3부: 닉슨 쇼크와 석유 동맹<br>4부: 달러의 슈퍼파워<br>5부: 미래와 우리 삶',
-                analogy: '이제 뉴스 속 \'달러\'가<br>다르게 보이시나요?<br><br>시청해주셔서 감사합니다! 🙏'
-            }
-        }
-    ];
-
-    const slideContainer = document.getElementById('slide-container');
-    const progressBar = document.getElementById('progress-bar');
-    let currentSlideIndex = 0;
-    let slideTimeout;
-
-    function renderSlide(slide) {
-        let html = '';
-        switch (slide.type) {
-            case 'title':
-                html = `<div class="slide-content title-slide"><h1>${slide.content.title}</h1><p>${slide.content.subtitle}</p></div>`;
-                break;
-            case 'definition':
-                html = `<div class="slide-content definition-slide">
-                    ${slide.content.icon ? `<div class="icon">${slide.content.icon}</div>` : ''}
-                    <h2>${slide.content.title}</h2>
-                    <p>${slide.content.description}</p>
-                    <div class="analogy">${slide.content.analogy}</div>
-                </div>`;
-                break;
-        }
-        return html;
-    }
-
-    function showNextSlide() {
-        if (currentSlideIndex >= slidesData.length) {
-            setTimeout(() => {
-                currentSlideIndex = 0;
-                progressBar.style.transition = 'none';
-                progressBar.style.width = '0%';
-                setTimeout(showNextSlide, 50);
-            }, 3000);
-            return;
-        }
-
-        const slide = slidesData[currentSlideIndex];
-        const totalDuration = slidesData.reduce((acc, s) => acc + s.duration, 0); 
-        const elapsedDuration = slidesData.slice(0, currentSlideIndex).reduce((acc, s) => acc + s.duration, 0);
-
-        slideContainer.innerHTML = renderSlide(slide);
-        
-        const activeSlide = slideContainer.querySelector('.slide-content');
-        if (activeSlide) {
-            setTimeout(() => activeSlide.classList.add('active'), 50);
-        }
-        
-        requestAnimationFrame(() => {
-            progressBar.style.transition = `width ${slide.duration / 1000}s linear`;
-            progressBar.style.width = `${(elapsedDuration + slide.duration) / totalDuration * 100}%`;
-        });
-        
-        currentSlideIndex++;
-        clearTimeout(slideTimeout);
-        slideTimeout = setTimeout(showNextSlide, slide.duration);
-    }
-    
-    window.onload = () => {
-        showNextSlide();
-    };
-</script>
 </body>
 </html>
