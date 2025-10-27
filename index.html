@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>엔화 약세 - 달러 강세</title>
+    <title>아베노믹스 3개의 화살</title>
     <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -12,6 +12,7 @@
             --muji-light-grey: #EAEAEA;
             --text-primary: #2d2d2d;
             --text-secondary: #555555;
+            --blue: #0250D0;
         }
         body {
             font-family: 'Pretendard', sans-serif;
@@ -42,120 +43,103 @@
             font-size: 2rem;
             font-weight: 900;
             color: var(--text-primary);
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
             text-align: center;
         }
         .subtitle {
             font-size: 1.1rem;
             font-weight: 700;
-            color: var(--pwc-orange);
-            margin-bottom: 3rem;
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
             text-align: center;
         }
-        .coins-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 3rem;
-            margin: 2rem 0;
-            position: relative;
-        }
-        .coin {
-            position: relative;
+        .arrows-container {
             display: flex;
             flex-direction: column;
-            align-items: center;
-            gap: 1rem;
+            gap: 1.5rem;
+            width: 100%;
+            max-width: 350px;
         }
-        .coin-circle {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
+        .arrow-item {
+            background-color: white;
+            padding: 1.3rem 1.5rem;
+            border-radius: 1rem;
+            border: 2px solid var(--muji-light-grey);
             display: flex;
             align-items: center;
-            justify-content: center;
-            font-size: 3.5rem;
-            font-weight: 900;
+            gap: 1rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .arrow-item:hover {
+            transform: translateY(-5px);
             box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-            animation: pulse 2s ease-in-out infinite;
         }
-        .yen-coin .coin-circle {
-            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
-            color: white;
-            animation: shrink 3s ease-in-out infinite;
+        .arrow-item.highlight {
+            border: 3px solid var(--pwc-orange);
+            background: linear-gradient(135deg, #fff 0%, #FFF5F0 100%);
         }
-        .dollar-coin .coin-circle {
-            background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
-            color: white;
-            animation: grow 3s ease-in-out infinite;
-        }
-        @keyframes shrink {
-            0%, 100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(0.75);
-            }
-        }
-        @keyframes grow {
-            0%, 100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.25);
-            }
-        }
-        .coin-label {
-            font-size: 1.2rem;
+        .arrow-number {
+            font-size: 1.5rem;
             font-weight: 900;
-            text-align: center;
+            color: var(--pwc-orange);
+            min-width: 2rem;
         }
-        .yen-coin .coin-label {
-            color: #ff6b6b;
-        }
-        .dollar-coin .coin-label {
-            color: #4CAF50;
-        }
-        .arrow {
+        .arrow-icon {
             font-size: 2.5rem;
-            font-weight: 900;
-            animation: bounce 1.5s ease-in-out infinite;
+            animation: bounce 2s ease-in-out infinite;
         }
-        .yen-coin .arrow {
-            color: #ff6b6b;
+        .arrow-item:nth-child(1) .arrow-icon {
+            animation-delay: 0s;
         }
-        .dollar-coin .arrow {
-            color: #4CAF50;
+        .arrow-item:nth-child(2) .arrow-icon {
+            animation-delay: 0.3s;
+        }
+        .arrow-item:nth-child(3) .arrow-icon {
+            animation-delay: 0.6s;
         }
         @keyframes bounce {
             0%, 100% {
                 transform: translateY(0);
             }
             50% {
-                transform: translateY(-10px);
+                transform: translateY(-8px);
             }
         }
-        .exchange-rate {
-            margin-top: 3rem;
+        .arrow-content {
+            flex: 1;
+        }
+        .arrow-title {
+            font-size: 1.2rem;
+            font-weight: 900;
+            color: var(--text-primary);
+            margin-bottom: 0.3rem;
+        }
+        .arrow-desc {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+        .note-box {
+            margin-top: 2rem;
+            background-color: #FFF5E6;
+            padding: 1rem 1.2rem;
+            border-radius: 0.8rem;
+            border: 2px solid #FFE0B2;
             text-align: center;
         }
-        .rate-box {
-            background-color: white;
-            padding: 1.2rem 2rem;
-            border-radius: 1rem;
-            border: 2px solid var(--muji-light-grey);
-            display: inline-block;
-        }
-        .rate-label {
+        .note-box .note-title {
             font-size: 0.9rem;
-            font-weight: 700;
-            color: var(--text-secondary);
-            margin-bottom: 0.5rem;
-        }
-        .rate-value {
-            font-size: 2rem;
             font-weight: 900;
             color: var(--pwc-orange);
+            margin-bottom: 0.4rem;
+        }
+        .note-box .note-text {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1.5;
         }
         .footer {
             position: absolute;
@@ -168,28 +152,41 @@
 </head>
 <body>
     <div class="container">
-        <div class="title">엔화 약세 심화</div>
-        <div class="subtitle">달러 대비 엔화 가치 급락</div>
+        <div class="title">아베노믹스</div>
+        <div class="subtitle">3개의 화살 (Three Arrows)</div>
         
-        <div class="coins-container">
-            <div class="coin yen-coin">
-                <div class="coin-circle">¥</div>
-                <div class="arrow">↓</div>
-                <div class="coin-label">엔화<br>약세</div>
+        <div class="arrows-container">
+            <div class="arrow-item highlight">
+                <div class="arrow-number">①</div>
+                <div class="arrow-icon">⬇</div>
+                <div class="arrow-content">
+                    <div class="arrow-title">금융 완화</div>
+                    <div class="arrow-desc">중앙은행이 금리를 낮추고<br>시장에 돈을 공급</div>
+                </div>
             </div>
             
-            <div class="coin dollar-coin">
-                <div class="coin-circle">$</div>
-                <div class="arrow">↑</div>
-                <div class="coin-label">달러<br>강세</div>
+            <div class="arrow-item highlight">
+                <div class="arrow-number">②</div>
+                <div class="arrow-icon">⬆</div>
+                <div class="arrow-content">
+                    <div class="arrow-title">재정 확장</div>
+                    <div class="arrow-desc">정부가 대규모 사업에<br>돈을 투입</div>
+                </div>
+            </div>
+            
+            <div class="arrow-item">
+                <div class="arrow-number">③</div>
+                <div class="arrow-icon">➡</div>
+                <div class="arrow-content">
+                    <div class="arrow-title">성장 전략</div>
+                    <div class="arrow-desc">규제 완화와 구조개혁으로<br>민간 투자 촉진</div>
+                </div>
             </div>
         </div>
         
-        <div class="exchange-rate">
-            <div class="rate-box">
-                <div class="rate-label">환율</div>
-                <div class="rate-value">152¥/$</div>
-            </div>
+        <div class="note-box">
+            <div class="note-title">다카이치 총리 핵심 정책</div>
+            <div class="note-text">3개의 화살 중 ①②를<br>더욱 강력하게 추진!</div>
         </div>
         
         <div class="footer">야금일기</div>
