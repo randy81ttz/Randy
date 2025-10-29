@@ -3,193 +3,209 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>아베노믹스 3개의 화살</title>
+    <title>일본 부채 씬 5 & 8 (스타일 적용)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Pretendard 폰트 사용 -->
     <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
+        /* 참조 코드 스타일 적용 (PWC Orange + Muji Beige) */
         :root {
-            --pwc-orange: #D04A02;
-            --muji-bg: #F8F7F4;
-            --muji-light-grey: #EAEAEA;
+            --point-color: #D04A02; /* PWC 오렌지 */
+            --bg-color: #F8F7F4;    /* 무인양품 배경색 */
+            --light-grey: #EAEAEA;
             --text-primary: #2d2d2d;
             --text-secondary: #555555;
-            --blue: #0250D0;
+            --main-color: #0250D0; /* 참조 코드의 Blue (필요시 사용) */
         }
-        body {
-            font-family: 'Pretendard', sans-serif;
-            background-color: #111;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            padding: 1rem;
-            margin: 0;
+        body { 
+            font-family: 'Pretendard', sans-serif; 
+            background-color: #111; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            min-height: 100vh; 
+            padding: 1rem; 
         }
-        .container {
+        .app-container { 
+            width: 100%; 
+            max-width: 400px; 
+            aspect-ratio: 9 / 16; 
+            background-color: var(--bg-color); /* 무인양품 배경 적용 */
+            display: flex; 
+            flex-direction: column; 
+            overflow: hidden; 
+            border-radius: 2rem; 
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3); 
+            position: relative; 
+        }
+        .progress-bar-container { width: 100%; height: 5px; background-color: var(--light-grey); position: absolute; top: 0; left: 0; z-index: 10; }
+        .progress-bar { width: 0%; height: 100%; background-color: var(--point-color); /* PWC 오렌지 적용 */ }
+        .slide-content { 
+            flex-grow: 1; 
+            padding: 3rem 2rem; /* 참조 코드 패딩 적용 */
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            text-align: center; 
+            opacity: 0; 
+            position: absolute; 
+            width: 100%; 
+            height: 100%; 
+            transform: translateY(20px); 
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out; 
+        }
+        .slide-content.active { opacity: 1; transform: translateY(0); }
+        
+        /* Definition Slide 스타일 (참조 코드 기준) */
+        .definition-slide { padding: 2.5rem 1.5rem; } 
+        .definition-slide h2 { 
+            font-size: 2.5rem; /* 참조 코드 폰트 크기 */
+            font-weight: 900; 
+            color: var(--point-color); /* PWC 오렌지 적용 */
+            margin-bottom: 1.5rem; /* 마진 조정 */
+            line-height: 1.2;
+        }
+        
+        .definition-slide .icon { 
+            font-size: 3.5rem; /* 참조 코드 아이콘 크기 */
+            margin-bottom: 1.5rem; /* 마진 조정 */
+            color: var(--text-primary); 
+        } 
+
+        /* 핵심 자막 스타일 (참조 코드의 formula 스타일 활용) */
+        .definition-slide .caption { 
+            font-size: 1.2rem; /* 폰트 크기 조정 */
+            font-weight: 700; /* 굵기 조정 */
+            color: var(--text-primary); 
+            line-height: 1.5; 
+            padding: 1rem; /* 패딩 조정 */
+            background-color: #ffffff; /* 흰색 배경 */
+            border-radius: 0.5rem; 
+            border: 1px solid var(--light-grey); /* 테두리 추가 */
             width: 100%;
-            max-width: 400px;
-            aspect-ratio: 9 / 16;
-            background-color: var(--muji-bg);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            border-radius: 2rem;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-            position: relative;
-            overflow: hidden;
-            padding: 2rem;
         }
-        .title {
-            font-size: 2rem;
-            font-weight: 900;
-            color: var(--text-primary);
-            margin-bottom: 0.5rem;
-            text-align: center;
+        /* 자막 내 강조 텍스트 (PWC 오렌지) */
+        .definition-slide .caption strong {
+            color: var(--point-color);
+            font-weight: 900; /* 더 굵게 */
         }
-        .subtitle {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--text-secondary);
-            margin-bottom: 2.5rem;
-            text-align: center;
-        }
-        .arrows-container {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-            width: 100%;
-            max-width: 350px;
-        }
-        .arrow-item {
-            background-color: white;
-            padding: 1.3rem 1.5rem;
-            border-radius: 1rem;
-            border: 2px solid var(--muji-light-grey);
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .arrow-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-        }
-        .arrow-item.highlight {
-            border: 3px solid var(--pwc-orange);
-            background: linear-gradient(135deg, #fff 0%, #FFF5F0 100%);
-        }
-        .arrow-number {
-            font-size: 1.5rem;
-            font-weight: 900;
-            color: var(--pwc-orange);
-            min-width: 2rem;
-        }
-        .arrow-icon {
-            font-size: 2.5rem;
-            animation: bounce 2s ease-in-out infinite;
-        }
-        .arrow-item:nth-child(1) .arrow-icon {
-            animation-delay: 0s;
-        }
-        .arrow-item:nth-child(2) .arrow-icon {
-            animation-delay: 0.3s;
-        }
-        .arrow-item:nth-child(3) .arrow-icon {
-            animation-delay: 0.6s;
-        }
-        @keyframes bounce {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-8px);
-            }
-        }
-        .arrow-content {
-            flex: 1;
-        }
-        .arrow-title {
-            font-size: 1.2rem;
-            font-weight: 900;
-            color: var(--text-primary);
-            margin-bottom: 0.3rem;
-        }
-        .arrow-desc {
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: var(--text-secondary);
-            line-height: 1.4;
-        }
-        .note-box {
-            margin-top: 2rem;
-            background-color: #FFF5E6;
-            padding: 1rem 1.2rem;
-            border-radius: 0.8rem;
-            border: 2px solid #FFE0B2;
-            text-align: center;
-        }
-        .note-box .note-title {
-            font-size: 0.9rem;
-            font-weight: 900;
-            color: var(--pwc-orange);
-            margin-bottom: 0.4rem;
-        }
-        .note-box .note-text {
-            font-size: 0.85rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            line-height: 1.5;
-        }
-        .footer {
-            position: absolute;
-            bottom: 1.5rem;
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            font-weight: 700;
+
+        .footer { 
+            position: absolute; 
+            bottom: 1.5rem; 
+            width: 100%; 
+            text-align: center; 
+            font-size: 0.8rem; /* 참조 코드 폰트 크기 */
+            color: var(--text-secondary); 
+            font-weight: 700; 
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="title">아베노믹스</div>
-        <div class="subtitle">3개의 화살 (Three Arrows)</div>
-        
-        <div class="arrows-container">
-            <div class="arrow-item highlight">
-                <div class="arrow-number">①</div>
-                <div class="arrow-icon">⬇</div>
-                <div class="arrow-content">
-                    <div class="arrow-title">금융 완화</div>
-                    <div class="arrow-desc">중앙은행이 금리를 낮추고<br>시장에 돈을 공급</div>
-                </div>
-            </div>
-            
-            <div class="arrow-item highlight">
-                <div class="arrow-number">②</div>
-                <div class="arrow-icon">⬆</div>
-                <div class="arrow-content">
-                    <div class="arrow-title">재정 확장</div>
-                    <div class="arrow-desc">정부가 대규모 사업에<br>돈을 투입</div>
-                </div>
-            </div>
-            
-            <div class="arrow-item">
-                <div class="arrow-number">③</div>
-                <div class="arrow-icon">➡</div>
-                <div class="arrow-content">
-                    <div class="arrow-title">성장 전략</div>
-                    <div class="arrow-desc">규제 완화와 구조개혁으로<br>민간 투자 촉진</div>
-                </div>
-            </div>
+    <div class="app-container">
+        <div class="progress-bar-container">
+            <div id="progress-bar" class="progress-bar"></div>
         </div>
-        
-        <div class="note-box">
-            <div class="note-title">다카이치 총리 핵심 정책</div>
-            <div class="note-text">3개의 화살 중 ①②를<br>더욱 강력하게 추진!</div>
-        </div>
-        
+        <div id="slide-container"></div>
         <div class="footer">야금일기</div>
     </div>
+<script>
+    // 2025년 10월 최신 정보가 반영된 Scene 5와 Scene 8 데이터
+    const slidesData = [
+        // --- Scene 5: 초저금리 '엄마 찬스' 종료 (7초) ---
+        {
+            type: 'definition',
+            duration: 7000,
+            content: {
+                icon: '🤱➡️✅', 
+                title: '과거의 \'엄마 찬스\' 종료!',
+                // <strong> 태그를 사용하여 PWC 오렌지 강조, //는 <br>로 변환됨
+                description: 'YCC·마이너스 금리 폐지 (2024.3)// <strong>→ 현재 금리 0.5%, 재정 압박 증가 중</strong> ⚠️',
+            }
+        },
+        // --- Scene 8: 잠재 리스크 (8초) ---
+        {
+            type: 'definition',
+            duration: 8000,
+            content: {
+                icon: '⚠️', 
+                title: 'But! 잠재 리스크는? ⚠️',
+                // 핵심 자막
+                description: '💱 엔화 신뢰 훼손?// 📈 금리 급등 시 이자 폭증?// 👶 미래 세대에 부담 전가?',
+            }
+        }
+    ];
+
+    const slideContainer = document.getElementById('slide-container');
+    const progressBar = document.getElementById('progress-bar');
+    let currentSlideIndex = 0;
+    let slideTimeout;
+
+    function renderSlide(slide) {
+        let html = '';
+        // //를 <br>로 치환하여 줄바꿈을 적용합니다.
+        const descriptionHtml = slide.content.description ? slide.content.description.replace(/\/\//g, '<br>') : '';
+
+        if (slide.type === 'definition') {
+            html = `<div class="slide-content definition-slide">
+                ${slide.content.icon ? `<div class="icon">${slide.content.icon}</div>` : ''}
+                <h2>${slide.content.title}</h2>
+                <div class="caption">${descriptionHtml}</div>
+            </div>`;
+        }
+        return html;
+    }
+
+    function showNextSlide() {
+        if (currentSlideIndex >= slidesData.length) {
+            // 마지막 슬라이드 후 3초 뒤에 처음으로 돌아감
+            setTimeout(() => {
+                currentSlideIndex = 0;
+                progressBar.style.transition = 'none';
+                progressBar.style.width = '0%';
+                setTimeout(showNextSlide, 50);
+            }, 3000);
+            return;
+        }
+
+        const slide = slidesData[currentSlideIndex];
+        const totalDuration = slidesData.reduce((acc, s) => acc + s.duration, 0); 
+        const elapsedDuration = slidesData.slice(0, currentSlideIndex).reduce((acc, s) => acc + s.duration, 0);
+
+        // 이전 슬라이드의 active 클래스 제거
+        const allSlides = slideContainer.querySelectorAll('.slide-content');
+        allSlides.forEach(s => s.classList.remove('active'));
+
+        slideContainer.innerHTML = renderSlide(slide);
+        
+        const activeSlide = slideContainer.querySelector('.slide-content');
+        if (activeSlide) {
+            setTimeout(() => activeSlide.classList.add('active'), 50);
+        }
+        
+        requestAnimationFrame(() => {
+            progressBar.style.transition = 'none'; // Reset transition for immediate width set
+            progressBar.style.width = `${elapsedDuration / totalDuration * 100}%`;
+
+            // Force repaint/reflow before applying the transition
+            progressBar.offsetHeight; 
+
+            setTimeout(() => {
+                 progressBar.style.transition = `width ${slide.duration / 1000}s linear`;
+                 const targetWidth = (elapsedDuration + slide.duration) / totalDuration * 100;
+                 progressBar.style.width = `${targetWidth}%`;
+            }, 10); // Minimal delay
+        });
+        
+        currentSlideIndex++;
+        clearTimeout(slideTimeout);
+        slideTimeout = setTimeout(showNextSlide, slide.duration);
+    }
+    
+    window.onload = () => {
+        showNextSlide();
+    };
+</script>
 </body>
 </html>
